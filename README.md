@@ -351,3 +351,5 @@ creates the data file `test.dat` :
 etc.
 ```
 All the random vectors of `rand16.dat` appear somewhere in the list, now preceded by the decoder inputs. In generative models the symmetries that previously only applied to the hidden nodes also apply to the input nodes. That explains why the first random vector of `rand16.dat` can end up as the 5th item in `test.dat`.
+
+## NEW
