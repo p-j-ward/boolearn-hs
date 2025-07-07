@@ -354,8 +354,19 @@ All the random vectors of `rand16.dat` appear somewhere in the list, now precede
 
 ## Classic classification: MNIST
 
-The early days of neural networks, when everyone was classifying the MNIST digits, was a sad part of machine learning history. There was a leaderboard mindset, where even fractional-percent increases in accuracy were celebrated. Instead of advancing the foundations of generalization, researchers obsessed about the quirks of one data set. We include it here to demonstrate that boolearn also works with analog data.
+Though boolearn was created for learning Boolean data, without modification it can also work with analog data. Go to the directory `mnist`. Here is what you will see in the file `mnistjr.dat`:
+```
+3823
+1	64
+10	1
+
+0.00	0.06	0.38	0.94	0.75	0.06	0.00	0.00	0.00	0.44 ...
+
+etc.
+```
+
+
 
 ## Generalization: random logic data
 
-## Generalization: cellular automata data
+## Generalization: cellular automaton data
