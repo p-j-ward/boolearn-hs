@@ -378,7 +378,7 @@ As our first experiment in generalization, we run `train` with the following com
 ```
 ./../src/train mnistjr.net mnistjr.dat N 5. .2 1e-3 10 2e5 .05 1 mnistjr_N &
 ```
-where the number of training data `N` is 128, 256, and 512. Since the data items are scrambled, when training with 128 data the algorithm sees about 13 examples of each kind of digit. 
+where the number of training data `N` is 128, 256, and 512. Since the data is randomly ordered, when training with 128 data the algorithm sees about 13 examples of each kind of digit. Accuracies are the average of $h/n$, where $h=1$ if the Boolean output "hits" the correct class, $h=0$ otherwise, and $n$ is the number of 1's in the Boolean output.
 
 
 
