@@ -374,6 +374,13 @@ When `train` sees output-type `c    1` ($c > 2$) in the header, it replaces all 
 ```
 Regarding the input data, instead of converting `0` to -1 and `1` to +1, when the input type is `1`, `train` expects floating point numbers in [0, 1] and maps these linearly into the range [-1, +1]. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
 
+As our first experiment in generalization, we run `train` with the following command line:
+```
+./../src/train mnistjr.net mnistjr.dat N 5. .2 1e-3 10 2e5 .05 1 mnistjr_N &
+```
+where the number of training data `N` is 128, 256, and 512. Since the data items are scrambled, when training with 128 data the algorithm sees about 13 examples of each kind of digit. 
+
+
 
 
 ## Generalization: random logic data
