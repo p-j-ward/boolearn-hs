@@ -365,8 +365,13 @@ Though boolearn was created for learning Boolean data, without modification it c
 
 etc.
 ```
-There are 3823 data items, and `1	64` means there are 64 inputs of type `1` (analog), that `train` reads as floating-point numbers. The `10	1` that follows means there is just 1 10-valued output. As you've surely guessed, each line of 64 floating-point numbers is the $16\times 16$ grayscale image of some MNIST numeral, and the integer that follows is its class (0-9). This is a smaller and downsampled version of the original $28\times 28$, 16-bit data set.
+There are 3823 data items, and `1 64` means there are 64 inputs of type `1` (analog), that `train` reads as floating-point numbers. The `10 1` that follows means there is just a single 10-valued output. As you've surely guessed, each line of 64 floating-point numbers is the $16\times 16$ grayscale image of some MNIST numeral, and the integer that follows is its class (0-9). This is a smaller and downsampled version of the original $28\times 28$, 16-bit data set.
 
+When `train` sees output-type `c 1` ($c>2$) in the header, it replaces all the output classes with $c$-component 1-hot vectors, the position of the 1 marking the class. The boolnet must therefore have $c$ output nodes. For `mnistjr.dat` we already get interesting results with the 2-layer network that `layered` creates with width file
+```
+2
+64 32 10
+```
 
 ## Generalization: random logic data
 
