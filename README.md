@@ -325,9 +325,9 @@ expected 4 arguments: netfile genfile items id
 ```
 For `netfile` we should *not* use `rand16.net`, since `layered` created that file with random weights (that did not get used by `train`). Instead, we should use `rand16.sol`: the same network but with solution weights. The next argument for `data` is the generator file that goes with the solution, `rand16.gen`. The argument `items` is needed when we want `data` to generate synthetic data (`items` in number) by sampling random inputs. Since here the file `rand16.gen` provides all the inputs, we tell `data` to use that instead with the setting 0 for this argument. The command
 ```
-./../src/data rand16.sol rand16.gen 0 rand16
+./../src/data rand16.sol rand16.gen 0 rand16+inputs
 ```
-creates the data file `rand16.dat` :
+creates the data file `rand16+inputs.dat` :
 ```
 16
 2 4
@@ -350,7 +350,7 @@ creates the data file `rand16.dat` :
 
 etc.
 ```
-All the random vectors of `rand16.dat` appear somewhere in the list, now preceded by the decoder inputs. In generative models the symmetries that previously only applied to the hidden nodes also apply to the input nodes. That explains why the first random vector of `rand16.dat` can end up as the 5th item in `test.dat`.
+All the random vectors of `rand16.dat` appear somewhere in the list, now preceded by the decoder inputs. In generative models the symmetries that previously only applied to the hidden nodes also apply to the input nodes. That explains why the first random vector of `rand16.dat` can end up as the 5th item in `rand16+inputs.dat`.
 
 ## Classic classification: MNIST
 
