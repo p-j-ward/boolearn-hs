@@ -372,7 +372,7 @@ When `train` sees output-type `c    1` ($c>2$) in the header, it replaces all th
 2
 64 32 10
 ```
-Regarding the input data, instead of converting 0 to $-1$ and 1 to $+1$, `train` expects floating point numbers in the range 0. to 1. and maps them linearly into the range spanned by $-1$ and $+1$. 
+Regarding the input data, instead of converting 0 to $-1$ and 1 to $+1$, when the input type is `1`, `train` expects floating point numbers in the range 0. to 1. and maps these linearly into the range $-1$ to $+1$. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
 
 
 
