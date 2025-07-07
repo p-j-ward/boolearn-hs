@@ -354,17 +354,18 @@ All the random vectors of `rand16.dat` appear somewhere in the list, now precede
 
 ## Classic classification: MNIST
 
-Though boolearn was created for learning Boolean data, without modification it can also work with analog data. Go to the directory `mnist`. Here is what you will see in the file `mnistjr.dat`:
+Though boolearn was created for learning Boolean data, without modification it can also work with analog data. Go to the directory `mnist`. Here is what you will see at the top of the file `mnistjr.dat`:
 ```
 3823
 1	64
 10	1
 
-0.00	0.06	0.38	0.94	0.75	0.06	0.00	0.00	0.00	0.44 ...
+0.00	0.06	0.38	0.94	0.75	0.06	0.00	0.00	0.00	0.44	1.00	0.38	0.38	0.63	0.00	0.00	0.00	0.50	1.00	0.13	0.00	0.69	0.13	0.00	0.00	0.31	1.00	0.19	0.00	0.31	0.44	0.00	0.00	0.44	0.81	0.19	0.00	0.50	0.44	0.00	0.00	0.25	0.75	0.00	0.06	0.81	0.31	0.00	0.00	0.00	0.88	0.56	0.94	0.56	0.00	0.00	0.00	0.00	0.38	0.88	0.44	0.06	0.00	0.00
+0
 
 etc.
 ```
-
+There are 3823 data items, and `1	64` means there are 64 inputs of type `1` (analog), that `train` reads as floating-point numbers. The `10	1` that follows means there is just 1 10-valued output. As you've surely guessed, each line of 64 floating-point numbers is the $16\times 16$ grayscale image of some MNIST numeral, and the integer that follows is its class (0-9). This is a smaller and downsampled version of the original $28\times 28$, 16-bit data set.
 
 
 ## Generalization: random logic data
