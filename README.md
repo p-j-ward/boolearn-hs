@@ -37,7 +37,7 @@ While these are sufficient to express arbitrary Boolean functions, the higher-su
 
 Boolearn has the following directories:
 
-`autocode cellauto decode logic mnist mult src`
+`autocode cellauto decode randlogic mnist mult src`
 
 These hold data and results for various applications. All source files are kept in the directory src. To create the executables, go to src and do
 
@@ -352,4 +352,8 @@ etc.
 ```
 All the random vectors of `rand16.dat` appear somewhere in the list, now preceded by the decoder inputs. In generative models the symmetries that previously only applied to the hidden nodes also apply to the input nodes. That explains why the first random vector of `rand16.dat` can end up as the 5th item in `test.dat`.
 
-## NEW
+## Classic classification: MNIST
+
+## Generalization: random logic data
+
+## Generalization: cellular automata data
