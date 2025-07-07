@@ -365,14 +365,14 @@ Though boolearn was created for learning Boolean data, without modification it c
 
 etc.
 ```
-There are $3823$ data items, and `1    64` means there are $64$ inputs of type `1` (analog), that `train` reads as floating-point numbers. The `10    1` that follows means there is just a single $10$-valued output. As you've surely guessed, each line of $64$ floating-point numbers is the $8\times 8$ grayscale image of some MNIST numeral, and the integer that follows is its class ($0$-$9$). This is a smaller and downsampled version of the original $28\times 28$, $16$-bit data set.
+There are 3823 data items, and `1    64` means there are 64 inputs of type `1` (analog), that `train` reads as floating-point numbers. The `10    1` that follows means there is just a single 10-valued output. As you've surely guessed, each line of 64 floating-point numbers is the 8 $\times$ 8 grayscale image of some MNIST numeral, and the integer that follows is its class (0 - 9). This is a smaller and downsampled version of the original 28 $\times$ 28, 16-bit data set.
 
-When `train` sees output-type `c    1` ($c>2$) in the header, it replaces all the output classes with $c$-component 1-hot vectors, the position of the $1$ marking the class. The boolnet must therefore have $c$ output nodes. For `mnistjr.dat` we already get interesting results with the 2-layer network that `layered` creates with width file
+When `train` sees output-type `c    1` ($c > 2$) in the header, it replaces all the output classes with $c$-component 1-hot vectors, the position of the 1 marking the class. The boolnet must therefore have $c$ output nodes. For `mnistjr.dat` we already get interesting results with the 2-layer network that `layered` creates with width file
 ```
 2
-64 32 10
+64 64 10
 ```
-Regarding the input data, instead of converting `0` to $-1$ and `1` to $+1$, when the input type is `1`, `train` expects floating point numbers in $[0, 1]$ and maps these linearly into the range $[-1, +1]$. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
+Regarding the input data, instead of converting `0` to -1 and `1` to +1, when the input type is `1`, `train` expects floating point numbers in [0, 1] and maps these linearly into the range [-1, +1]. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
 
 
 
