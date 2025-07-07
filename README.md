@@ -290,44 +290,44 @@ Recalling what we found in the autoencoder experiments, it should be possible to
 ```
 Using the `rand16.net` constructed by `layered` with this width file, we run `train` as in the other examples:
 ```
-./../src/train rand16.net rand16.dat 16 3. .5 1e-4 10 1e6 .01 1 test &
+./../src/train rand16.net rand16.dat 16 3. .5 1e-4 10 1e6 .01 1 rand16 &
 ```
-Here is `test.gap`:
+Here is `rand16.gap`:
 ```
-         4    0.13255935    0.22712855    0.87000768    1.22930747    1.22930747     0.000 %     0.000 %
-        16    0.10139585    0.19051218    0.60907604    0.92662968    0.92662968     0.000 %     0.000 %
-        64    0.07857407    0.12233721    0.43314459    0.63719458    0.59279208     0.000 %     0.000 %
-       252    0.04567090    0.06724448    0.28383838    0.37568461    0.31569327     0.000 %     0.000 %
-      1001    0.03200167    0.05656542    0.19654548    0.27119040    0.24861232     0.000 %     0.000 %
-      3982    0.03758419    0.06244747    0.17790543    0.29341729    0.19169208     0.000 %     0.000 %
-     15849    0.02993051    0.04959298    0.11080268    0.22515698    0.10169874     0.000 %     0.000 %
-     63096    0.04092607    0.06941564    0.13707712    0.30456958    0.04868250     0.000 %     0.000 %
-    122167    0.00193576    0.00154775    0.00604958    0.00991337    0.00991337     0.000 %     0.000 %
+         4    0.13575713    0.22147336    0.68988313    1.08057431    1.08057431     0.000 %     0.000 %
+        16    0.10156869    0.19300126    0.59327046    0.91103500    0.91103500     0.000 %     0.000 %
+        64    0.07241161    0.11791873    0.46760830    0.64507023    0.61210050     0.000 %     0.000 %
+       252    0.04127719    0.05865468    0.24503162    0.32627824    0.32627824     0.000 %     0.000 %
+      1001    0.03505607    0.05050834    0.13844674    0.24742913    0.20913804     0.000 %     0.000 %
+      3982    0.04201491    0.06611897    0.15508586    0.30804065    0.15949651     0.000 %     0.000 %
+     15849    0.03484822    0.05317678    0.09555559    0.23383975    0.15949651     0.000 %     0.000 %
+     63096    0.03416997    0.05492065    0.12664713    0.24905679    0.14358508     0.000 %     0.000 %
+     76136    0.00183625    0.00168834    0.00602704    0.00998458    0.00998458     0.000 %     0.000 %
 ```
-The small final gap leaves no doubt that a true decoder network has been found, even when that can't be confirmed by the accuracies (rightmost columns) when there is no input data. However, `train` provides a check by writing generator files when there is no input data. Because we used `test` for `id`, the generator file is `test.gen`. Here is how it begins:
+The small final gap leaves no doubt that a true decoder network has been found, even when that can't be confirmed by the accuracies (rightmost columns) when there is no input data. However, `train` provides a check by writing generator files when there is no input data. Because we used `rand16` for `id`, the generator file is `rand16.gen`. Here is how it begins:
 ```
 16  4
 
- 0 0 0 0
- 1 0 0 0
- 0 1 0 0
- 1 1 0 0
- 0 0 1 0
+ 0 0 0 0	1
+ 1 0 0 0	1
+ 0 1 0 0	1
+ 1 1 0 0	1
+ 0 0 1 0	1
 
 etc.
 ```
-Since our network architecture specified 4 input/code bits, each line has a binary assignment to those bits. Moreover, for the network to generate all 16 (distinct) random vectors, all $2^4$ assignments must be used. `train` lists them as increasing binary numbers.
+Since our network architecture specified 4 input/code bits, each line has a binary assignment to those bits. This is followed by the number of times the assignment was used in generating the data. Because the data comprised $2^4$ distinct vectros, all $2^4$ assignments had to be used (exactly once). `train` lists them as increasing binary numbers.
 
 The most direct way to check our decoder is with the synthetic data generating program `data`. Here is what we get when we query its arguments:
 ```
 ./../src/data
 expected 4 arguments: netfile genfile items id
 ```
-For `netfile` we should *not* use `rand16.net`, since `layered` created that file with random weights (that did not get used by `train`). Instead, we should use `test.sol`: the same network but with solution weights. The next argument for `data` is the generator file that goes with the solution, `test.gen`. The argument `items` is needed when we want `data` to generate synthetic data (`items` in number) by sampling random inputs. Since here the file `test.gen` provides all the inputs, we tell `data` to skip the random data generation with the setting 0 for this argument. The command
+For `netfile` we should *not* use `rand16.net`, since `layered` created that file with random weights (that did not get used by `train`). Instead, we should use `rand16.sol`: the same network but with solution weights. The next argument for `data` is the generator file that goes with the solution, `rand16.gen`. The argument `items` is needed when we want `data` to generate synthetic data (`items` in number) by sampling random inputs. Since here the file `rand16.gen` provides all the inputs, we tell `data` to use that instead with the setting 0 for this argument. The command
 ```
-./../src/data test.sol test.gen 0 test
+./../src/data rand16.sol rand16.gen 0 rand16
 ```
-creates the data file `test.dat` :
+creates the data file `rand16.dat` :
 ```
 16
 2 4
