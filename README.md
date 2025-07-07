@@ -354,6 +354,8 @@ All the random vectors of `rand16.dat` appear somewhere in the list, now precede
 
 ## Classic classification: MNIST
 
+The early days of neural networks, when everyone was classifying the MNIST digits, was a sad part of machine learning history. There was a leaderboard mindset, where even fractional-percent increases in accuracy were celebrated. Instead of advancing the foundations of generalization, researchers obsessed about the quirks of MNIST.
+
 ## Generalization: random logic data
 
 ## Generalization: cellular automata data
