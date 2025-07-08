@@ -422,10 +422,10 @@ By doubling the number of examples, the generalization accuracy improved signifi
 Since now the training accuracy is struggling to reach 100 %, there is not much point in increasing the number of training examples. To improve generalization one has to improve the model.
 
 
-## Generalization with synthetic data: random AND/OR circuits
+## Generalization with synthetic data I: random AND/OR circuits
 
 A critical (but little used) test of machine learning algorithms is training on models that can exactly represent the data. Generalization in this setting is simply the question, "How little data is sufficient to exactly reconstruct the model ?".
 
 
 
-## More generalization with synthetic data: cellular automata
+## Generalization with synthetic data II: cellular automata
