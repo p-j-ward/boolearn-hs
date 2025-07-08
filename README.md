@@ -367,20 +367,31 @@ etc.
 ```
 There are 3823 data items, and `1    64` means there are 64 inputs of type `1` (analog), that `train` reads as floating-point numbers. The `10    1` that follows means there is just a single 10-valued output. As you've surely guessed, each line of 64 floating-point numbers is the 8 $\times$ 8 grayscale image of some MNIST numeral, and the integer that follows is its class (0 - 9). This is a smaller and downsampled version of the original 28 $\times$ 28, 16-bit data set.
 
-When `train` sees output-type `c    1` ($c > 2$) in the header, it replaces all the output classes with $c$-component 1-hot vectors, the position of the 1 marking the class. The boolnet must therefore have $c$ output nodes. For `mnistjr.dat` we already get interesting results with the 2-layer network that `layered` creates with width file
+When `train` sees output-type `c    1` ($c > 2$) in the header, it replaces the output classes with $c$-component 1-hot vectors, the position of the 1 marking the class. The boolnet must therefore have $c$ output nodes. For `mnistjr.dat` we already get interesting results with a simple 2-layer network with these widths:
 ```
 2
 64 64 10
 ```
-Regarding the input data, instead of converting `0` to -1 and `1` to +1, when the input type is `1`, `train` expects floating point numbers in [0, 1] and maps these linearly into the range [-1, +1]. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
+Regarding the analog input, instead of converting `0`/`1` to -1/+1 (binary data), when the input type is `1` `train` expects floating point numbers in the range [0, 1] and maps these linearly into the range [-1, +1]. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
 
-As our first experiment in generalization, we run `train` with the following command line:
+MNIST is our first experiment with generalization. We train on just the first `N` data items with the command line
 ```
 ./../src/train mnistjr.net mnistjr.dat N 5. .2 1e-3 10 2e5 .05 1 mnistjr_N &
 ```
-where the number of training data `N` is 128, 256, and 512. Since the data is randomly ordered, when training with 128 data the algorithm sees about 13 examples of each kind of digit. Accuracies are the average of $h/n$, where $h=1$ if the Boolean output "hits" the correct class, $h=0$ otherwise, and $n$ is the number of 1's in the Boolean output.
+and compare results when `N` is 128, 256, and 512. Since the data is randomly ordered, when training with $N$ items the algorithm sees about $N/10$ examples of each kind of digit. Accuracies are the average of $h/n$, where $h=1$ if the Boolean output "hits" the correct class, $h=0$ otherwise, and $n$ is the number of 1's in the Boolean output (since the network's output is not automatically 1-hot).
 
+We set the squared-BTF-norm parameter `btfn` equal to 5. instead of 3. to increase the network's information capacity. We also do not have any reason to believe the class of an image can be derived by simple logic applied to the pixels!
 
+Here is the gap file for the first experiment, `mnistjr_128`:
+```
+         4    0.56477771    0.30823892    0.78820497    5.24328543    5.24328543    11.558 %    11.534 %
+        12    0.09648800    0.10657777    0.75997095    1.38984998    1.38984998    11.496 %    11.562 %
+        39    0.02545053    0.11357696    0.57923384    1.17616036    1.11352254    15.326 %    13.250 %
+       132    0.01937969    0.03810052    0.47594831    0.49728139    0.49728139    41.016 %    22.186 %
+       448    0.01193183    0.03570415    0.12622912    0.34270020    0.30723177    87.109 %    58.378 %
+      1516    0.00662057    0.01501151    0.05308913    0.14469507    0.11386118    98.438 %    66.434 %
+      4704    0.00253154    0.00534298    0.03195912    0.04966517    0.04966517   100.000 %    64.116 %
+```
 
 
 ## Generalization: random logic data
