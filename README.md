@@ -419,8 +419,7 @@ By doubling the number of examples, the generalization accuracy improved signifi
      59011    0.00393315    0.01066006    0.04317845    0.09790033    0.06967737    99.219 %    88.750 %
     167957    0.00224249    0.00510358    0.04063471    0.04844574    0.04844574    98.535 %    90.063 %
 ```
-
-
+Since now the training accuracy is struggling to reach 100 %, there is not much point in increasing the number of training examples. To improve generalization one has to improve the model.
 
 
 ## Generalization: random logic data
