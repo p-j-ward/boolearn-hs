@@ -424,7 +424,7 @@ Since now the training accuracy is struggling to reach 100 %, there is not much 
 
 ## Generalization with synthetic data: random AND/OR circuits
 
-A critical (but little used) test of machine learning algorithms is training on models that can exactly represent the data. Generalization in this setting is simply the question, "How much data is required to exactly reconstruct the model ?".
+A critical (but little used) test of machine learning algorithms is training on models that can exactly represent the data. Generalization in this setting is simply the question, "How little data is sufficient to exactly reconstruct the model ?".
 
 
 
