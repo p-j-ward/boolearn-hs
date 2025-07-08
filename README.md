@@ -437,7 +437,7 @@ With the setting `andorprob << .5` in `layered`, all the BTFs are AND/OR gates w
 ```
 Negative weights correspond to NOT gates and are used with probabilty 1/2.
 
-So far we have only used `data` with the setting `items << 0`, which is an instruction to generate as many data items as there are assignments in a `.gen` file. By setting `items << N`` for some positive N, `data` will instead generate N data items by randomly sampling binary inputs to the boolnet. A dummy argument must be provided for the `.gen` file:
+So far we have only used `data` with the setting `items << 0`, which is an instruction to generate as many data items as there are assignments in a `.gen` file. By setting `items << M` for some positive M, `data` will instead generate M data items by randomly sampling binary inputs to the boolnet. A dummy argument must be provided for the `.gen` file:
 ```
 ./../src/data 3.net dummy.gen 10000 3
 ```
@@ -455,5 +455,28 @@ Here is the top of the data file `3.dat`:
 
 etc.
 ```
+
+To see how well `train` can learn to generalize, we run
+```
+./../src/train 3.net 3.dat N 3. .2 1e-3 20 1e6 .1 1 3_N &
+```
+with various numbers of training data `N`. Here is `3_64.gap`:
+```
+         2    0.87529153    0.48048943    0.82754204    5.78797802    5.78797802    51.123 %    50.553 %
+         4    0.54679478    0.32646915    0.82125022    3.73990161    3.73990161    50.732 %    50.633 %
+         8    0.22541255    0.17727525    0.81676621    1.82939005    1.82939005    50.977 %    50.604 %
+        16    0.04757007    0.13271608    0.79204898    1.15017350    1.15017350    51.172 %    50.753 %
+        32    0.04727803    0.13673757    0.67647838    1.12740468    1.12525797    52.539 %    51.523 %
+        64    0.07060727    0.10585284    0.63656250    1.00003649    1.00003649    55.615 %    54.695 %
+       126    0.05441507    0.08451410    0.50823741    0.81627446    0.80678849    68.701 %    59.454 %
+       252    0.03549788    0.05583900    0.38084336    0.57289717    0.57289717    82.666 %    67.673 %
+       502    0.02474204    0.04337193    0.22425908    0.38546762    0.35407650    96.582 %    73.690 %
+      1001    0.01483602    0.02662393    0.11488884    0.21917124    0.17914247    99.902 %    75.119 %
+      1996    0.01111909    0.02340811    0.07526052    0.17152670    0.11683637   100.000 %    75.168 %
+      2624    0.00558595    0.01399110    0.04026800    0.09658450    0.09658450   100.000 %    75.262 %
+```
+While `train` had no trouble finding weights that explained the 64 training data, the generalization accuray is only about 75 %. Here is `3_128.gap`:
+
+
 
 ## Generalization with synthetic data II: cellular automata
