@@ -422,6 +422,6 @@ By doubling the number of examples, the generalization accuracy improved signifi
 Since now the training accuracy is struggling to reach 100 %, there is not much point in increasing the number of training examples. To improve generalization one has to improve the model.
 
 
-## Generalization: random logic data
+## Generalization with synthetic data: random and/or circuits
 
-## Generalization: cellular automaton data
+## More generalization with synthetic data: cellular automata
