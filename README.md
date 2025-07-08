@@ -424,8 +424,36 @@ Since now the training accuracy is struggling to reach 100 %, there is not much 
 
 ## Generalization with synthetic data I: random AND/OR circuits
 
-A critical (but little used) test of machine learning algorithms is training on models that can exactly represent the data. Generalization in this setting is simply the question, "How little data is sufficient to exactly reconstruct the model ?".
+A critical (but little used) test of machine learning algorithms is training on models that can exactly represent the data. Generalization in this setting is simply the question, "How little data is sufficient to exactly reconstruct the model ?". We will test `train` on the task of reconstructing the weights of a boolnet from the data it generates and some general characteristics of its architecture. This exercise also demonstrates new features of the programs `layered` and `data`.
 
+Go to the directory `randlogic`. You will not see any `.dat` files because you will make your own. Start by creating a boolnet using `3.wth`:
+```
+3
+32 32 32 32
+```
+With the setting `andorprob << .5` in `layered`, all the BTFs are AND/OR gates with probability 1/2 and otherwise just copy a Boolean value from the layer below:
+```
+./../src/layered .5 3.wth 3.net
+```
+Negative weights correspond to NOT gates and are used with probabilty 1/2.
 
+So far we have only used `data` with the setting `items << 0`, which is an instruction to generate as many data items as there are assignments in a `.gen` file. By setting `items << N`` for some positive N, `data` will instead generate N data items by randomly sampling binary inputs to the boolnet. A dummy argument must be provided for the `.gen` file:
+```
+./../src/data 3.net dummy.gen 10000 3
+```
+Here is the top of the data file `3.dat`:
+```
+10000
+2 32
+2 32
+
+ 1 1 1 1 0 1 0 1 1 0 0 0 1 1 1 1 1 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1
+ 0 0 0 0 0 1 1 0 1 1 0 1 0 0 1 0 0 0 1 1 1 0 0 0 0 0 0 1 0 0 1 0
+
+ 1 0 0 1 1 0 1 0 0 1 0 1 1 1 0 0 1 1 0 1 0 0 1 0 0 1 0 0 0 1 1 1
+ 0 0 1 0 1 1 0 0 0 0 0 0 1 0 1 0 1 1 0 0 0 1 0 0 0 0 0 1 1 1 0 1
+
+etc.
+```
 
 ## Generalization with synthetic data II: cellular automata
