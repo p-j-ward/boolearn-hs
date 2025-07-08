@@ -480,3 +480,5 @@ While `train` had no trouble finding weights that explained the 64 training data
 
 
 ## Generalization with synthetic data II: cellular automata
+
+While circuits of AND/OR/NOT gates can express any Boolean function, randomly constructed circuits may seem 
