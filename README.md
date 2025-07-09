@@ -460,7 +460,7 @@ To see how well `train` can learn to generalize, we run
 ```
 ./../src/train 3.net 3.dat N 3. .2 1e-3 20 1e6 .1 1 3_N &
 ```
-with various numbers of training data `N`. Here is `3_64.gap`:
+with various numbers of training items `N`. Here is `3_64.gap`:
 ```
          2    0.87529153    0.48048943    0.82754204    5.78797802    5.78797802    51.123 %    50.553 %
          4    0.54679478    0.32646915    0.82125022    3.73990161    3.73990161    50.732 %    50.633 %
@@ -475,7 +475,7 @@ with various numbers of training data `N`. Here is `3_64.gap`:
       1996    0.01111909    0.02340811    0.07526052    0.17152670    0.11683637   100.000 %    75.168 %
       2624    0.00558595    0.01399110    0.04026800    0.09658450    0.09658450   100.000 %    75.262 %
 ```
-While `train` had no trouble finding weights that explained the 64 training data, the generalization accuray is only about 75 %. Here is `3_128.gap`:
+While `train` had no trouble finding weights that explained the 64 training items, the generalization accuray is only about 75 %. Here is `3_128.gap`:
 ```
          2    0.89042781    0.48181004    0.82937318    5.86757642    5.86757642    51.245 %    49.735 %
          4    0.55461353    0.32735790    0.82137888    3.78018733    3.78018733    51.489 %    49.826 %
