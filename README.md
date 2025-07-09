@@ -621,4 +621,21 @@ Because it's harder, we decrease the size to 16 and time steps to 1. This rule h
 3
 16 32 32 16
 ```
-
+Training on 256 data items,
+```
+./../src/train 30_1.net 30_1.dat 256 3. .2 1e-3 10 1e6 .1 1 30_1_256 &
+```
+results in the following gap file:
+```
+         4    0.56121250    0.33602990    0.84513041    3.47287712    3.47287712    52.148 %    52.398 %
+        16    0.04911581    0.14486534    0.81501924    1.14732108    1.14732108    52.100 %    52.521 %
+        64    0.08313015    0.12538073    0.69099621    1.06406108    1.06406108    53.857 %    54.032 %
+       252    0.05359075    0.07538043    0.42371195    0.66054043    0.66054043    64.014 %    60.276 %
+      1001    0.04587595    0.07252703    0.33393721    0.57492250    0.56901972    73.584 %    61.376 %
+      3982    0.04389475    0.07187849    0.32025610    0.55890084    0.52774508    82.837 %    69.404 %
+     15849    0.02640796    0.05012771    0.18270749    0.35371384    0.33102048    97.363 %    94.154 %
+     63096    0.01636335    0.03361414    0.12138043    0.23419192    0.19729820    99.121 %    98.423 %
+    251189    0.01164226    0.02921470    0.09163289    0.19062306    0.14375005    99.561 %    99.309 %
+    755382    0.00549876    0.01577849    0.04568708    0.09834139    0.09834139    99.878 %    99.659 %
+```
+Keeping in mind the layer-wise permutation symmetry of solutions, `30_1_256.sol` will convince you that `train` has reconstructed a circuit that fits the above description perfectly. Unlike the rule-232 example that needed only the 3-input majority gate and zero bias weights (from node 0), in the rule-30 solution you will see that in all the BTFs that have three nonzero weights, one is to node 0 (because they are implementing 2-input AND and OR). It is remarkable that `train` is able to find this solution given only the "hint" that there is a solution with `btfn << 3`! Previous work on learning automaton rules with neural networks relied heavily on a convolutional structure for the weights, which was absent in this demonstration.
