@@ -174,7 +174,7 @@ Columns 2, 3, 4 show the gap broken down into contributions from the three varia
 
 In all cases (columns 2-6), when the rms gap goes to zero it means the $A$ and $B$ projections are nearly the same, or that a variable assignment has been found that satisfies both constraints. `train` uses the *divide-and-concur* constraint formulation where $A$ represents all the independent constraints at each BTF and each data item, while $B$ is responsible for concur, or the matching of one BTF's output ($y$) with another BTF's input ($x$), and the matching of the weights ($w$) across data items.
 
-Entries to the gap file are added on a logarithmic scale, that is, the iteration count grows by a constant factor from one line to the next (`train` computes this factor from the `epochs` argument). Condensing the evolution to 10 or 50 lines of output makes it easier to digest the progress. As we will see in the more challenging applications, the convergence to zero gap is similar in character.
+Entries to the gap file are added on a logarithmic scale, that is, the iteration count grows by a constant factor from one line to the next (`train` computes this factor from the `epochs` argument). Condensing the evolution to 10 or 50 lines of output makes it easier to digest the progress. We will see convergence to zero gap on a logarithmic time scale also in the more challenging applications.
 
 The solution weights are written to a file that has exactly the same format as the network file we created with `layered`. The only difference is that the weights in the third column are those determined by a constraint satisfaction algorithm. Here is the top of `test.sol`:
 ```
