@@ -525,4 +525,4 @@ Both accuracies reach 100 % when a smaller setting for `gapstop` is used. If we 
 
 ## Generalization with synthetic data II: cellular automata
 
-While circuits of AND/OR/NOT gates can express any Boolean function, randomly constructed circuits may seem 
+While 2-input AND/OR with NOT can express any Boolean function, the random circuits created by `layered` may not be your first choice to study generalization. The program `data_cellauto` offers an alternative. This generates random binary input strings and the output string that results when some number of steps of a cellular automaton rule is applied to the input.
