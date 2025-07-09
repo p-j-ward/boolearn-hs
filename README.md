@@ -612,8 +612,9 @@ etc.
 ```
 This shows all the weights going to node 33, the first hidden node. It shouldn't be a mystery why all except three of these, from the input nodes 1-32, are close to zero. The nonzero weights, from consecutive nodes, are nearly equal and implement a 3-input majority gate - one step of the automaton. Note that node 33 is *not* required to hold the successor of node 1 because the roles of the hidden nodes have a layer-wise permutation symmetry. The permutation selected in a solution is determined by the random initialization of `train`. In this solution node 33 holds the successor of node 22.
 
-
-If the near-perfect generalization accuracy does not convince you that `train` has reconstructed the random circuit, take a look at 3_256.sol`
-
-
+A harder rule to reconstruct is Wolfram's "chaos" rule with code 30:
+```
+./../src/data_cellauto 3 30 16 1 10000 30_1
+```
+Because it's harder, we decrease the size to 16 and time steps to 1. This rule has formula $q'=p\oplus (q \lor r)$, where $p,q,r$ are consecutive cells, and $\oplus$/$\lor$ are exclusive/regular OR.
 
