@@ -498,7 +498,7 @@ While `train` had no trouble finding weights that explained the 64 training data
     501188    0.01007479    0.02083242    0.06990876    0.15444499    0.11472015   100.000 %    84.967 %
     817382    0.00628811    0.01309673    0.04647657    0.09759826    0.09759826   100.000 %    86.923 %
 ```
-
+Here too we see that the number of training items is insufficient to generalize. But here is `3_256.gap`:
 ```
          2    0.90229764    0.48171511    0.82805122    5.92674008    5.92674008    49.011 %    49.264 %
          4    0.56167745    0.32761093    0.82312405    3.81591423    3.81591423    48.865 %    49.336 %
@@ -520,6 +520,8 @@ While `train` had no trouble finding weights that explained the 64 training data
     251189    0.00905458    0.02478916    0.06987461    0.16330250    0.11430751    99.915 %    99.789 %
     304208    0.00585157    0.01410334    0.05066723    0.09620216    0.09620216    99.988 %    99.754 %
 ```
+Both accuracies reach 100 % when a smaller setting for `gapstop` is used. If we repeat these experiments with another set of random gates (on the same architecture), the results will be the same: a transition to perfect generalization when the number of training items reaches 256.
+
 
 ## Generalization with synthetic data II: cellular automata
 
