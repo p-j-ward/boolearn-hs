@@ -525,4 +525,9 @@ Both accuracies reach 100 % when a smaller setting for `gapstop` is used. If we 
 
 ## Generalization with synthetic data II: cellular automata
 
-While 2-input AND/OR with NOT can express any Boolean function, the random circuits created by `layered` may not be your first choice to study generalization. The program `data_cellauto` offers an alternative. This generates random binary input strings and the output string that results when some number of steps of a cellular automaton rule is applied to the input.
+While 2-input AND/OR with NOT can express any Boolean function, the random circuits created by `layered` may not be your first choice to study generalization. The program `data_cellauto` offers an alternative. This generates random binary input strings and the output string that results when some number of steps of a 1D cellular automaton rule is applied to the input. Here is what you get when you query for the arguments:
+```
+./../src/data_cellauto 
+expected 6 arguments: inbits rule size steps items id
+```
+`inbits` is the number of input bits and `rule` is the Wolfram encoding of the rule that gets applied to the input bits. For example, `inbits << 3` and `rule << 232` is the majority rule applied to three adjacent bits to determine the next center bit (one time step). `size` is the 1D extent of the automaton and `steps` is the number of time steps between the input and output strings. `items` is the number of data, each one generated from a random sample of the inputs. `id` is the name of the data file, before `.dat` is appended. 
