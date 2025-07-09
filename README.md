@@ -530,4 +530,23 @@ While 2-input AND/OR with NOT can express any Boolean function, the random circu
 ./../src/data_cellauto 
 expected 6 arguments: inbits rule size steps items id
 ```
-`inbits` is the number of input bits and `rule` is the Wolfram encoding of the rule that gets applied to the input bits. For example, `inbits << 3` and `rule << 232` is the majority rule applied to three adjacent bits to determine the next center bit (one time step). `size` is the 1D extent of the automaton and `steps` is the number of time steps between the input and output strings. `items` is the number of data, each one generated from a random sample of the inputs. `id` is the name of the data file, before `.dat` is appended. 
+`inbits` is the number of input bits and `rule` is the Wolfram encoding of the rule that gets applied to the input bits. For example, `inbits << 3` and `rule << 232` is the majority rule applied to three adjacent bits to determine the next center bit (one time step). `size` is the 1D (periodic) extent of the automaton and `steps` is the number of time steps between the input and output strings. `items` is the number of data, each one generated from a random sample of the inputs. `id` is the name of the data file, before `.dat` is appended.
+
+The difficulty of reconstructing automaton rules varies greatly. Let's start with an easy one:
+```
+./../src/data_cellauto 3 232 32 3 10000 232_3
+```
+This generates 3-step data for the "majority" rule on a 1D (periodic) world of 32 cells. Here is the top of `232_3.dat`
+```
+10000
+2 32
+2 32
+
+ 1 1 1 1 0 0 1 1 1 1 0 1 0 0 1 1 1 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1
+ 1 1 1 1 0 0 1 1 1 1 1 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+
+ 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 1 1 1 0 1 1 1 0 0 1 1 0 1 0 0
+ 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 1 1 1 0 0 0
+
+etc.
+```
