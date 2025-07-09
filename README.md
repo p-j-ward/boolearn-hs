@@ -625,7 +625,7 @@ Training on 256 data items,
 ```
 ./../src/train 30_1.net 30_1.dat 256 3. .2 1e-3 10 1e6 .1 1 30_1_256 &
 ```
-results in the following gap file:
+results in the following gap file, `30_1_256.gap`:
 ```
          4    0.56121250    0.33602990    0.84513041    3.47287712    3.47287712    52.148 %    52.398 %
         16    0.04911581    0.14486534    0.81501924    1.14732108    1.14732108    52.100 %    52.521 %
