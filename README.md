@@ -39,7 +39,7 @@ Boolearn has the following directories:
 
 `autocode cellauto decode randlogic mnist mult src`
 
-These hold data and results for various applications. All source files are kept in the directory src. To create the executables, go to src and do
+These hold data and results for various applications. All source files are kept in the directory `src`. To create the executables, go to `src` and do
 
 `make all`
 
