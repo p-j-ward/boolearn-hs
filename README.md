@@ -616,5 +616,5 @@ A harder rule to reconstruct is Wolfram's "chaos" rule with code 30:
 ```
 ./../src/data_cellauto 3 30 16 1 10000 30_1
 ```
-Because it's harder, we decrease the size to 16 and time steps to 1. This rule has formula $q_{t+1}=p\oplus (q \lor r)$, where $p,q,r$ are consecutive cells, and $\oplus$ / $\lor$ are exclusive/regular OR.
+Because it's harder, we decrease the size to 16 and time steps to 1. This rule has formula $q_{t+1}=p_t\oplus (q_t \lor r_t)$, where $p,q,r$ are consecutive cells, and $\oplus$ / $\lor$ are exclusive/regular OR.
 
