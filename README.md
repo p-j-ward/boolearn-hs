@@ -27,7 +27,7 @@ $w=(\sqrt{m/3}) (\pm 1, \pm 1, \pm 1, 0, \ldots, 0)$ ,
 
 (and its permutations) has maximized margin $\delta=\sqrt{m/3}$. More generally, the smallest $n(s)=\mathbf{w}\cdot \mathbf{w}$, when the integer vector $\mathbf{w}$ has support $s$, is $n(s)=s$ for odd $s$ and $n(s)=s-1$ when $s$ is even. In practical terms, this means that if we impose $\delta=\sqrt{m/n}$ on all the BTFs of the boolnet for some odd $n$, then all the BTFs are equivalent to maximized/rationalized BTFs of the kind described with support at most $s=n$, when $n$ is odd. This assumes of course that all the BTFs see $s$ linearly independent input tuples during training.
 
-Boolnets trained with margin $\delta=\sqrt{m/3}$ can represent arbitrary logic circuits comprised of binary And/Or gates and Not. That's because the rationalized $w$ shown above implements a majority gate and
+Boolnets trained with margin $\delta=\sqrt{m/3}$ can represent arbitrary logic circuits comprised of binary AND/OR gates and NOT. That's because the rationalized $w$ shown above implements a majority gate and
 
 $\mathrm{And}(p,q) = \mathrm{Maj}(0,p,q)\qquad \mathrm{Or}(p,q) = \mathrm{Maj}(1,p,q)$
 
