@@ -628,7 +628,7 @@ A harder rule to reconstruct is Wolfram's "chaos" rule with code 30:
 ```
 ./../src/data_cellauto 3 30 16 1 10000 30_1
 ```
-Because it's harder, we decrease the size to 16 and time steps to 1. This rule has formula $q_{t+1}=p_t\oplus (q_t \lor r_t)$, where $p,q,r$ are consecutive cells and $\oplus$ / $\lor$ are exclusive/regular OR. To compute this with 2-input AND/OR and NOT one needs *two* intermediate stages, each holding two bits. The first intermediate stage holds $p$ and the OR of $q$ and $r$, which we call $s$. The second stage holds the AND of $p$ and $\neg s$ in one bit, the AND of $\neg p$ and $s$ in the other bit. The OR of the bits in the second stage is the exclusive OR of $p$ and $s$. This should convince you that to implement just one time step of the rule-30 automaton, in a 16-cell world, we need a boolnet `30_1.net` with the following width specification:
+Because it's harder, we decrease the size to 16 and time steps to 1. This rule has formula $q_{t+1}=p_t\oplus (q_t \lor r_t)$, where $p,q,r$ are consecutive cells and $\oplus$ / $\lor$ are exclusive/regular OR. To compute this with 2-input AND/OR and NOT one needs *two* intermediate stages, each holding *two* bits. The first intermediate stage holds $p$ and the OR of $q$ and $r$, which we call $s$. The second stage holds the AND of $p$ and $\neg s$ in one bit, the AND of $\neg p$ and $s$ in the other bit. The OR of the bits in the second stage is the exclusive OR of $p$ and $s$. This should convince you that to implement just one time step of the rule-30 automaton, in a 16-cell world, we need a boolnet `30_1.net` with the following width specification:
 ```
 3
 16 32 32 16
