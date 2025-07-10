@@ -376,6 +376,49 @@ etc.
 ```
 The strings of 256 bits are interesting, when rendered as 16 $\times$ 16 images (0 = white, 1 = black). It is believed these are representations of the number 4 used by early humans. They are distinct and a decoder would need at least 13 input bits to generate them. What should we expect when we try to train a decoder that takes fewer input bits? Fewer input bits is better, since after all these are meant to be representations of the same thing! On the other hand, not all the constraints can be satisfied when the boolnet has fewer than 13 input bits. In this situation the constraint satisfaction algorithm finds "near-solutions". More technically, these are pairs of *proximal point*, one on constraint $A$, the other on constraint $B$, that are as close as possible. Instead of reaching zero, the final gap is the distance between the proximal points. Smaller final gaps translate to better near-solutions.
 
+Not very much is known about the near-solutions of boolearn, so you are mostly on your own! To show you what can happen, we will train a decoder that takes just 4 input bits and has width file (`mnist4.wth`)
+```
+2
+4 64 256
+```
+To train on 512 of the 5842 data items we do
+```
+./../src/train mnist4.net mnist4.dat 512 5. .2 1e-3 10 1e4 .01 1 mnist4_512 &
+```
+knowing well that a gap of .01 will never be achieved. Here is `mnist4_512.gap`:
+```
+         3    0.72035927    0.38189273    0.46359181    5.95279491    5.95279491     0.000 %     0.000 %
+         7    0.29048315    0.16916299    0.46891611    2.48940356    2.48940356     0.000 %     0.000 %
+        16    0.04209437    0.08813810    0.70012062    0.99426888    0.99426888     0.000 %     0.000 %
+        40    0.02117502    0.10328215    0.68418138    1.02474541    0.98747111     0.000 %     0.000 %
+       101    0.04249667    0.08815220    0.49937287    0.86560658    0.86560658     0.000 %     0.000 %
+       252    0.04098313    0.04902041    0.38818199    0.59893842    0.59263834     0.000 %     0.000 %
+       631    0.03807410    0.04751405    0.33047658    0.55061287    0.54237408     0.000 %     0.000 %
+      1585    0.03491726    0.05303282    0.31863180    0.55483949    0.49395702     0.000 %     0.000 %
+      3982    0.03461566    0.05481216    0.32719442    0.55508064    0.45585156     0.000 %     0.000 %
+     10000    0.03252803    0.05005584    0.34184916    0.51928595    0.45585156     0.000 %     0.000 %
+```
+The gap has saturated and there's no point in performing more iterations. Here is the generator file, `mnist4_512.gen`:
+```
+11  4
+
+ 0 0 0 0	1
+ 1 0 0 0	41
+ 0 1 0 0	38
+ 0 1 1 0	1
+ 0 0 0 1	1
+ 1 0 0 1	18
+ 0 1 0 1	17
+ 0 0 1 1	6
+ 1 0 1 1	164
+ 0 1 1 1	215
+ 1 1 1 1	10
+```
+Not all 16 generators on 4 bits were used to explain the data, and some were used much more than others. The corresponding decodings are obtained using `data`:
+```
+./../src/data mnist4_512.sol mnist4_512.gen 0 mnist4_512
+```
+Here are renderings of the decodings of the most popular assignments (used 164 and 215 times):
 ![popular4s](4_512.png)
 
 ## Classic classification: MNIST
