@@ -137,7 +137,7 @@ The argument names exactly match the variable names in the C program. Here's wha
 * `btfn` << `3.` (sets the margin via the squared norm of the rationalized BTF weight vector, as described above)
 * `beta` << `.2` (time-step value of the RRR constraint satisfaction algorithm)
 * `gam` << `1e-3`(RRR metric auto-tuning parameter)
-* `epochs` << 10 (maximum number of lines written to the file for monitoring progress)
+* `epochs` << `10` (maximum number of lines written to the file for monitoring progress)
 * `itermax` << `1e4` (maximum number of RRR iterations)
 * `gapstop` << `.01` (RRR termination criterion)
 * `trials` << `1` (increase this when compiling statistics from multiple runs)
