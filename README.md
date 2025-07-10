@@ -229,6 +229,8 @@ Three sets of profoundly silly data files are provided, corresponding to $n=3, 4
 
 0 1 0 0 0 0 0 0 1 1 1 0 0 0 1 1
 0 1 0 0 0 0 0 0 1 1 1 0 0 0 1 1
+
+etc.
 ```
 Two of the 16 matching input/output vectors are shown. Rumelhart et al. used 1-hot vectors (and $2^3=8$). Our vectors are more random. A simple 2-layer architecture with layer-widths
 ```
