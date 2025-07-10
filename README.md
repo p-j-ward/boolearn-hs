@@ -149,7 +149,7 @@ Because of the last argument, `train` will generate the following output files:
 * `test.run` (statistics when doing multiple runs)
 * `test.sol` (the solution weights)
 
-The file whose contents you will be following closely, even as `train` is running, is the gap file, `test.gap`. For real-time reporting add an `&` at the end of your command line to put the job in the background. By doing
+The file whose contents you will be following closely, even as `train` is running, is the "gap file", `test.gap`. For real-time reporting add an `&` at the end of your command line to put the job in the background. By doing
 ```
 more test.gap
 ```
