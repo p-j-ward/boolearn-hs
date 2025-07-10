@@ -211,7 +211,7 @@ In several of the next applications the time used by `train` will be much longer
 
 time $\propto$ `edges` $\times$ `items` $\times$ `iter`
 
-Here `iter` $\le$ `itermax`, the number of iterations used. `train` can be parallelized so that the expression above is divided by `nodes` $\times$ `items`.
+Here `iter` $\le$ `itermax`, the number of iterations used. `train` can be parallelized so that the time is divided by `nodes` $\times$ `items`.
 
 ## Revisiting the dawn of ML: the binary autoencoder
 
