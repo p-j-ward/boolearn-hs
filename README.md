@@ -29,7 +29,7 @@ $w=(\sqrt{m/3}) (\pm 1, \pm 1, \pm 1, 0, \ldots, 0)$ ,
 
 Boolnets trained with margin $\delta=\sqrt{m/3}$ can represent arbitrary logic circuits comprised of binary AND/OR gates and NOT. That's because the rationalized $w$ shown above implements a majority gate and
 
-$\mathrm{And}(p,q) = \mathrm{Maj}(0,p,q)\qquad \mathrm{Or}(p,q) = \mathrm{Maj}(1,p,q)$
+$\mathrm{AND}(p,q) = \mathrm{MAJ}(0,p,q)\qquad \mathrm{OR}(p,q) = \mathrm{MAJ}(1,p,q)$
 
 While these are sufficient to express arbitrary Boolean functions, the higher-support BTFs with smaller $\delta$ may offer more efficient representations. It's also important to bear in mind that the tight supports enabled by large $\delta$ get relaxed when BTFs do not see suffciently diverse inputs, as is often the case near the output end of a network.
 
