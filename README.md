@@ -472,7 +472,7 @@ To see how well `train` can learn to generalize, we run
 ```
 ./../src/train 3.net 3.dat N 3. .2 1e-3 20 1e6 .1 1 3_N &
 ```
-with various numbers of training items `N`. Here is `3_64.gap`:
+with various numbers of training items N. Here is `3_64.gap`:
 ```
          2    0.87529153    0.48048943    0.82754204    5.78797802    5.78797802    51.123 %    50.553 %
          4    0.54679478    0.32646915    0.82125022    3.73990161    3.73990161    50.732 %    50.633 %
