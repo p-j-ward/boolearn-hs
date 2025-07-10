@@ -404,7 +404,7 @@ Here is the gap file for the first experiment, `mnistjr_128.gap`:
       1516    0.00662057    0.01501151    0.05308913    0.14469507    0.11386118    98.438 %    66.434 %
       4704    0.00253154    0.00534298    0.03195912    0.04966517    0.04966517   100.000 %    64.116 %
 ```
-We see that `gapstop << .05` was sufficient to achieve 100 % training accuracy. The generalization accuracy (last column) is quite poor, but not unreasonable considering the algorithm had seen only about 13 examples of each digit.
+We see that `gapstop` << `.05` was sufficient to achieve 100 % training accuracy. The generalization accuracy (last column) is quite poor, but not unreasonable considering the algorithm had seen only about 13 examples of each digit.
 
 Here is `mnistjr_256.gap`:
 ```
