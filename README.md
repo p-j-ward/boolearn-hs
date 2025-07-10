@@ -364,6 +364,8 @@ etc.
 ```
 All the random vectors of `rand16.dat` appear somewhere in the list, now preceded by the decoder inputs. In generative models the symmetries that previously only applied to the hidden nodes also apply to the input nodes. That explains why the first random vector of `rand16.dat` can end up as the 5th item in `rand16+inputs.dat`.
 
+![popular4s](4_512.png)
+
 ## Classic classification: MNIST
 
 Though boolearn was created for learning Boolean data, without modification it can also work with analog data. Go to the directory `mnist`. Here is what you will see at the top of the file `mnistjr.dat`:
