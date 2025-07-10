@@ -567,7 +567,7 @@ Since we know that rule-232 is just a 3-input majority gate, to represent 3 time
 3
 32 32 32 32
 ```
-is sufficient, even when setting ``btfn << 3.` in `train`:
+is sufficient, even when setting `btfn` << `3.` in `train`:
 ```
 ./../src/train 232_3.net 232_3.dat 256 3. .2 1e-3 10 1e6 .1 1 232_3_256 &
 ```
