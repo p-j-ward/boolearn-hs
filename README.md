@@ -251,7 +251,7 @@ To see the effects of $\beta$, we launch two runs of `train` like this:
 
 ./../src/train auto16.net auto16.dat 16 3. .5 1e-4 10 1e5 .05 5 test2 &
 ```
-These differ only in the value of $\beta$, `.2` (`test1`) and `.5` (`test2`). Some of the arguments, like `gapstop`, have been changed from what we used in the multiplier application. A new feature is enabled by the setting `trials` << `5`. The results of 5 runs, differing only in the random initialization, are summarized in the two run files. Here is `test1.run`:
+These differ only in the value of $\beta$, `.2` (`test1`) and `.5` (`test2`). Some of the arguments, like `gapstop`, have been changed from what we used in the multiplier application. A new feature is enabled by the setting `trials` << `5`. The results of 5 runs, differing only in the random initialization, are summarized in the two "run files". Here is `test1.run`:
 ```
    1       90291    0.04924928   100.000 %     0.000 %
    2       73029    0.04878647   100.000 %     0.000 %
