@@ -197,7 +197,7 @@ The solution weights are written to a file that has exactly the same format as t
 
 etc.
 ```
-We see that the BTFs at nodes 5, 6, and 7 (the only ones shown) are implementing OR gates. The small weights have no effect on the BTF outputs, and the near equality (in magnitude) of the others implies they will act exactly as MAJ gates. In all three, one of the nonzero weights is to the bias input (node 0). The BTF at node 6 is therefore an OR, and by DeMorgan's rule, the BTFs at nodes 5 and 7 are AND gates. That's because every BTF $f(x)$ is self-dual, or $f(x)=-f(-x)$, so that
+The BTFs at nodes 5, 6, and 7 (the only ones shown) are implementing 2-input AND/OR gates. The small weights have no effect on the BTF outputs, and the near equality (in magnitude) of the others implies they will act exactly as MAJ gates. In all three, one of the nonzero weights is to the bias input (node 0). The BTF at node 6 is therefore an OR, and by DeMorgan's rule, the BTFs at nodes 5 and 7 are AND gates. That's because every BTF $f(x)$ is self-dual, or $f(x)=-f(-x)$, so that
 
 $\neg \mathrm{OR}(\neg p,\neg q)=\neg \mathrm{MAJ}(\neg 0,\neg p,\neg q)=\mathrm{MAJ}(0,p,q)==\mathrm{AND}(p,q)$.
 
