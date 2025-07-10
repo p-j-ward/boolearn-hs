@@ -364,6 +364,17 @@ etc.
 ```
 All the random vectors of `rand16.dat` appear somewhere in the list, now preceded by the decoder inputs. In generative models the symmetries that previously only applied to the hidden nodes also apply to the input nodes. That explains why the first random vector of `rand16.dat` can end up as the 5th item in `rand16+inputs.dat`.
 
+In `decode` you will find another data file, `mnist4.dat`, the top of which looks like this:
+```
+5842
+2 0
+2 256
+
+0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 1 0 ...
+
+etc.
+```
+
 ![popular4s](4_512.png)
 
 ## Classic classification: MNIST
