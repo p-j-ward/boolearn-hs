@@ -390,7 +390,7 @@ MNIST is our first experiment with generalization. We train on just the first `N
 ```
 ./../src/train mnistjr.net mnistjr.dat N 5. .2 1e-3 10 2e5 .05 1 mnistjr_N &
 ```
-and compare results when `N` is 128, 256, and 512. Since the data is randomly ordered, when training with $N$ items the algorithm sees about $N/10$ examples of each kind of digit. Accuracies are the average of $h/n$, where $h=1$ if the Boolean output "hits" the correct class, $h=0$ otherwise, and $n$ is the number of 1's in the Boolean output (since the network's output is not automatically 1-hot).
+and compare results when `N` is 128, 256, and 512. Since the data is randomly ordered, when training with N items the algorithm sees about N/10 examples of each kind of digit. Accuracies are the average of h/n, where h = 1 if the Boolean output "hits" the correct class, h = 0 otherwise, and n is the number of 1's in the Boolean output (since the network's output is not automatically 1-hot).
 
 We set the squared-BTF-norm parameter `btfn` equal to 5. instead of 3. to increase the network's information capacity. We also do not have any reason to believe the class of an image can be derived by simple logic applied to the pixels!
 
