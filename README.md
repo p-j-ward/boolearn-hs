@@ -374,7 +374,7 @@ In `decode` you will find another data file, `mnist4.dat`, the top of which look
 
 etc.
 ```
-The strings of 256 bits are interesting, when rendered as 16 $x$ 16 images (0 = white, 1 = black). It is believed these are representations of the number 4 used by early humans.
+The strings of 256 bits are interesting, when rendered as 16 $\times$ 16 images (0 = white, 1 = black). It is believed these are representations of the number 4 used by early humans. They are distinct and a decoder would need at least 13 input bits to generate them. What should we expect when we try to train a decoder that takes fewer input bits? Fewer input bits is better, since after all these are meant to be representations of the same thing! On the other hand, not all the constraints can be satisfied when the boolnet has fewer than 13 input bits. In this situation the constraint satisfaction algorithm finds "near-solutions". More technically, these are pairs of *proximal point*, one on constraint $A$, the other on constraint $B$, that are as close as possible. Instead of reaching zero, the final gap is the distance between the proximal points. Smaller final gaps translate to better near-solutions.
 
 ![popular4s](4_512.png)
 
