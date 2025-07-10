@@ -52,7 +52,7 @@ where `...` are the command-line arguments for `prog`. Since it's hard to rememb
 
 ## Networks
 
-Boolnets can have the structure of any directed acyclic graph. The software does not expect layers. Networks are one of the main inputs/outputs and read/written to files with suffix `.net`. Because layered networks are so widely used, there is a program for generating such networks. To learn how to create a layered network and to see some small examples, go to the `mult` directory.
+Boolnets can have the structure of any directed acyclic graph. The software does not expect layers. Networks are one of the main inputs/outputs and are read/written to files with suffix `.net`. Because layered networks are so widely used, there is a program for generating such networks. To learn how to create a layered network and to see some small examples, go to the `mult` directory.
 
 Data files have suffix `.dat`. Here's the top of `2x2.dat`:
 ```
