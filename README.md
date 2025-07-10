@@ -449,7 +449,7 @@ With the setting `andorprob` << `.5` in `layered`, all the BTFs are AND/OR gates
 ```
 Negative weights correspond to NOT gates and are used with probabilty 1/2.
 
-So far we have only used `data` with the setting `items << 0`, which is an instruction to generate as many data items as there are assignments in a `.gen` file. By setting `items << M` for some positive M, `data` will instead generate M data items by randomly sampling binary inputs to the boolnet. A dummy argument must be provided for the `.gen` file:
+So far we have only used `data` with the setting `items` << `0`, which is an instruction to generate as many data items as there are assignments in a `.gen` file. By setting `items` << `M` for some positive M, `data` will instead generate M data items by randomly sampling binary inputs to the boolnet. A dummy argument must be provided for the `.gen` file:
 ```
 ./../src/data 3.net dummy.gen 10000 3
 ```
