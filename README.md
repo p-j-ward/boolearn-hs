@@ -2,7 +2,7 @@
 
 This document comprises
 
-* A brief description of **boolnets**, networks of Boolean threshold functions.
+* A brief description of **boolnets**, networks of Boolean threshold functions (BTFs).
 
 * Instructions for using the software package **boolearn** for machine learning on boolnets.
 
