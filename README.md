@@ -418,7 +418,7 @@ Not all 16 generators on 4 bits were used to explain the data, and some were use
 ```
 ./../src/data mnist4_512.sol mnist4_512.gen 0 mnist4_512
 ```
-Here are renderings of the decodings of the most popular assignments (used 164 and 215 times):
+Here are renderings of the decodings (in `mnist4_512.dat`) of the most popular assignments (those used 164 and 215 times):
 ![popular4s](4_512.png)
 
 ## Classic classification: MNIST
