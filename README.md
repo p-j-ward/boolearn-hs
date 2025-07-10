@@ -436,7 +436,7 @@ Since now the training accuracy is struggling to reach 100 %, there is not much 
 
 ## Generalization with synthetic data I: random AND/OR circuits
 
-A critical (but little used) test of machine learning algorithms is training on models that can exactly represent the data. Generalization in this setting is simply the question, "How little data is sufficient to exactly reconstruct the model ?". We will test `train` on the task of reconstructing the weights of a boolnet from the data it generates and some general characteristics of its architecture. This exercise also demonstrates new features of the programs `layered` and `data`.
+A critical (but little used) test of machine learning algorithms is training on models that can exactly represent the data. Generalization in this setting is simply the question, "How little data is sufficient to exactly reconstruct the model ?" We will test `train` on the task of reconstructing the weights of a boolnet from the data it generates and some general characteristics of its architecture. This exercise also demonstrates new features of the programs `layered` and `data`.
 
 Go to the directory `randlogic`. You will not see any `.dat` files because you will make your own. Start by creating a boolnet using `3.wth`:
 ```
