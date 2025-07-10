@@ -443,7 +443,7 @@ Go to the directory `randlogic`. You will not see any `.dat` files because you w
 3
 32 32 32 32
 ```
-With the setting `andorprob << .5` in `layered`, all the BTFs are AND/OR gates with probability 1/2 and otherwise just copy a Boolean value from the layer below:
+With the setting `andorprob` << `.5` in `layered`, all the BTFs are AND/OR gates with probability 1/2 and otherwise just copy a Boolean value from the layer below:
 ```
 ./../src/layered .5 3.wth 3.net
 ```
