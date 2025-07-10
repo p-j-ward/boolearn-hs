@@ -75,7 +75,7 @@ To learn the multiplication table up to 2-bits you need to create a network that
 ./../src/layered 
 expected 3 arguments: andorprob widthfile netfile
 ```
-The first argument is only relevant if you also want to set the network weights for generating synthetic data. We will use this feature in a different application. The second argument, `widthfile`, is a tiny file you need to create yourself that sets the widths of the layers. Here's an example, `2x2.wth`:
+The first argument is only relevant when generating synthetic data with the network. We will use this feature in a different application. The second argument, `widthfile`, is a tiny file you need to create yourself that sets the widths of the layers. Here's an example, `2x2.wth`:
 ```
 2
 4 2 4
