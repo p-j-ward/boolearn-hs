@@ -374,6 +374,7 @@ In `decode` you will find another data file, `mnist4.dat`, the top of which look
 
 etc.
 ```
+The strings of 256 bits are interesting, when rendered as 16 $x$ 16 images (0 = white, 1 = black). It is believed these are representations of the number 4 used by early humans.
 
 ![popular4s](4_512.png)
 
