@@ -176,7 +176,7 @@ In all cases (columns 2-6), when the rms gap goes to zero it means the $A$ and $
 
 Entries to the gap file are added on a logarithmic scale, that is, the iteration count grows by a constant factor from one line to the next (`train` computes this factor from the `epochs` argument). Condensing the evolution to 10 or 50 lines of output makes it easier to digest the progress. We will see convergence to zero gap on a logarithmic time scale also in the more challenging applications.
 
-The solution weights are written to a file that has exactly the same format as the network file we created with `layered`. The only difference is that the weights in the third column are those determined by a constraint satisfaction algorithm. Here is the top of `test.sol`:
+The solution weights are written to a file that has exactly the same format as the network file we created with `layered`. The only difference is that the weights in the third column are those determined by the constraint satisfaction algorithm RRR. Here is the top of `test.sol`:
 ```
 17  5  4  60
     5    0   -1.28983434
