@@ -23,27 +23,15 @@ The positive number $\delta$ is the *margin parameter*. Large $\delta$ is more r
 
 If a BTF $`f(x):\{-1,1\}^m\to \{-1,1\}`$ has a representation with margin $\delta=\sqrt{m/n}$ for some $n>0$, then $f$ has a representation where the support $s$ of its weights $w$ is at most the largest odd integer not exceeding $n$.
 
-The positive number $n$ is the BTF-norm parameter. An interesting setting is `n` << `3`
+The positive number $n$ is the BTF-norm parameter. By defining the margin with the setting `n` << `3`, the BTF weights have support $s=3" or less. When $s=3$, the weight vector has the form
 
+$w=(\sqrt{m/3}) (\pm 1, \pm 1, \pm 1, 0, \ldots, 0)$ 
 
+or its permutations. With all positive signs this implements the majority gate on the three inputs with nonzero weights. Negative weights correspond to NOT applied to their inputs. In the other case for margins defined by BTF-norm $n=3$, when the support is smaller ($s<3$), the BTF simply transmits the value of the input with the weight of largest magnitude, negating when the latter is negative. Since 
 
+$\mathrm{AND}(p,q) = \mathrm{MAJ}(0,p,q)\qquad \mathrm{OR}(p,q) = \mathrm{MAJ}(1,p,q)$ 
 
-
-and when sufficiently large, boolnets can represent arbitrary Boolean circuits comprised of binary AND/OR gates as well as NOT. Because weights of negative sign flip the truth value of the corresponding input, they are the NOT gates in the circuit.
-
-
-
-To better understand the Boolean circuit correspondence and its generalization, consider a boolnet that has been trained so the margin constraint, with some $\delta$, is satisfied at all the BTFs and over all the training data. By adjusting the weights at each BTF we can then increase $\delta$, individually for each BTF, without changing the Boolean function it implements. When $\delta$ is maximized, the weight vector has the form $(\sqrt{m/n})\mathbf{w}$, where $\mathbf{w}$ has a support $s$ of coprime integers and squared norm $\mathbf{w}\cdot \mathbf{w}=n$, and there are $s$ linearly independent Boolean $x$ that satsify $|\mathbf{w}\cdot x|=1$. This $s=3$ example,
-
-$w=(\sqrt{m/3}) (\pm 1, \pm 1, \pm 1, 0, \ldots, 0)$ ,
-
-(and its permutations) has maximized margin $\delta=\sqrt{m/3}$. More generally, the smallest $n(s)=\mathbf{w}\cdot \mathbf{w}$, when the integer vector $\mathbf{w}$ has support $s$, is $n(s)=s$ for odd $s$ and $n(s)=s-1$ when $s$ is even. In practical terms, this means that if we impose $\delta=\sqrt{m/n}$ on all the BTFs of the boolnet for some odd $n$, then all the BTFs are equivalent to maximized/rationalized BTFs of the kind described with support at most $s=n$, when $n$ is odd. This assumes of course that all the BTFs see $s$ linearly independent input tuples during training.
-
-Boolnets trained with margin $\delta=\sqrt{m/3}$ can represent arbitrary logic circuits comprised of binary AND/OR gates and NOT. That's because the rationalized $w$ shown above implements a majority gate and
-
-$\mathrm{AND}(p,q) = \mathrm{MAJ}(0,p,q)\qquad \mathrm{OR}(p,q) = \mathrm{MAJ}(1,p,q)$ .
-
-While these are sufficient to express arbitrary Boolean functions, the higher-support BTFs with smaller $\delta$ may offer more efficient representations. It's also important to bear in mind that the tight supports enabled by large $\delta$ get relaxed when BTFs do not see suffciently diverse inputs, as is often the case near the output-end of a network.
+we see that boolnets with BTF-norm $n=3$ implement circuits comprising NOT and 2-iput AND/OR gates. BTFs with larger $n$ can implement AND/OR with more than 2 inputs, but also gates not in the standard repertoir. The corresponding smaller, less restrictive margins translate to networks with a higher information capacity, and the possibility of representations with fewer nodes/BTFs. It is important to bear in mind that the margin referred to by the theorem is the maximum of $|w\cdot x|$ over *all possible* inputs $x$ to the BTF. Many data sets have diverse inputs, so this condition usually holds for the BTFs near the input layer. Since the diversity/entropy may decrease in the higher layers, the BTF supports in those layers may exceed the bound set by the BTF-norm parameter.
 
 ## Directory organization
 
