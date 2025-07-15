@@ -367,7 +367,7 @@ All the random vectors of `rand16.dat` appear somewhere in the list, now precede
 In `decode` you will find another data file, `mnist4.dat`, the top of which looks like this:
 ```
 5842
-2 0
+1 0
 2 256
 
 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 1 0 ...
