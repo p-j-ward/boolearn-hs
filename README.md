@@ -328,7 +328,7 @@ The small final gap leaves no doubt that a true decoder network has been found, 
 
 etc.
 ```
-Since our network architecture specified 4 input/code bits, each line has a binary assignment to those bits. This is followed by the number of times the assignment was used in generating the data. Because the data comprised $2^4$ distinct vectros, all $2^4$ assignments had to be used (exactly once). `train` lists them as increasing binary numbers.
+Since our network architecture specified 4 input/code bits, each line has a binary assignment to those bits. This is followed by the number of times the assignment was used in generating the data. Because the data comprised $2^4$ distinct vectors, all $2^4$ assignments had to be used (exactly once). `train` lists them as increasing binary numbers.
 
 The most direct way to check our decoder is with the synthetic data generating program `data`. Here is what we get when we query its arguments:
 ```
