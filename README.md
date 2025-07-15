@@ -199,7 +199,7 @@ etc.
 ```
 The BTFs at nodes 5, 6, and 7 (the only ones shown) are implementing 2-input AND/OR gates. The small weights have no effect on the BTF outputs, and the near equality (in magnitude) of the others implies they will act exactly as MAJ gates. In all three, one of the nonzero weights is to the bias input (node 0). The BTF at node 6 is therefore an OR, and by DeMorgan's rule, the BTFs at nodes 5 and 7 are AND gates. That's because every BTF $f(x)$ is self-dual, or $f(x)=-f(-x)$, so that
 
-$\neg \mathrm{OR}(\neg p,\neg q)=\neg \mathrm{MAJ}(\neg 0,\neg p,\neg q)=\mathrm{MAJ}(0,p,q)==\mathrm{AND}(p,q)$.
+$\neg \mathrm{OR}(\neg p,\neg q)=\neg \mathrm{MAJ}(\neg 0,\neg p,\neg q)=\mathrm{MAJ}(0,p,q)=\mathrm{AND}(p,q)$.
 
 Two kinds of symmetry act on the hidden nodes of layered boolnets. First, the nodes within each layer may be freely permuted (without changing the completely-connected, layered architecture). Second, because of self-duality, a boolnet's output is unchanged when the signs of all the incoming and outgoing weights, on any of the hidden BTFs, are flipped. This means that even when you expect unique solutions (say for a multiplier circuit), the weights in the solution file can and will come out differently from run to run because of symmetries. `train` calls the C time function to set the seed of the random number generator used for initialization.
 
