@@ -31,7 +31,7 @@ or its permutations. With all positive signs this implements the majority gate o
 
 $\mathrm{AND}(p,q) = \mathrm{MAJ}(0,p,q)\qquad \mathrm{OR}(p,q) = \mathrm{MAJ}(1,p,q)$ 
 
-we see that boolnets with BTF-norm $n=3$ implement circuits comprising NOT and 2-iput AND/OR gates. BTFs with larger $n$ can implement AND/OR with more than 2 inputs, but also gates not in the standard repertoir. The corresponding smaller, less restrictive margins translate to networks with a higher information capacity, and the possibility of representations with fewer nodes/BTFs. It is important to bear in mind that the margin referred to by the theorem is the maximum of $|w\cdot x|$ over *all possible* inputs $x$ to the BTF. Many data sets have diverse inputs, so this condition usually holds for the BTFs near the input layer. Since the diversity/entropy may decrease in the higher layers, the BTF supports in those layers may exceed the bound set by the BTF-norm parameter.
+we see that boolnets with BTF-norm $n=3$ implement circuits comprising NOT and 2-iput AND/OR gates. BTFs with larger $n$ can implement AND/OR with more than 2 inputs, but also gates not in the standard repertoir. The corresponding smaller and less restrictive margins translate to networks with a higher information capacity, and the possibility of representations with fewer nodes/BTFs. It is important to bear in mind that the margin referred to by the theorem is the maximum of $|w\cdot x|$ over *all possible* inputs $x$ to the BTF. Many data sets have diverse inputs, so this condition usually holds for the BTFs near the input layer. Since the diversity/entropy may decrease in the higher layers, the BTF supports in those layers may exceed the bound set by the BTF-norm parameter.
 
 ## Directory organization
 
