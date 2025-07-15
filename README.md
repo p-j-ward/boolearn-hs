@@ -427,7 +427,7 @@ All 16 1-hot generators were used to explain the data, some more than others. Th
 ./../src/data mnist4_1024.sol mnist4_1024.gen 0 mnist4_1024
 ```
 Here are renderings of the 16 decodings (in `mnist4_1024.dat`):
-![popular4s](4_512.png)
+![sixteen4s](mnist4_1024.png)
 
 ## Classic classification: MNIST
 
