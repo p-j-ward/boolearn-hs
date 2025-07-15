@@ -134,7 +134,7 @@ The argument names exactly match the variable names in the C program. Here's wha
 * `netfile` << `2x2.net`
 * `datafile` << `2x2.dat`
 * `items` << `16` (number of data you wish to train with)
-* `btfn` << `3.` (sets the margin via the squared norm of the rationalized BTF weight vector, as described above)
+* `btfn` << `3.` (BTF-norm, used to set the BTF-margins as described above)
 * `beta` << `.2` (time-step value of the RRR constraint satisfaction algorithm)
 * `gam` << `1e-3`(RRR metric auto-tuning parameter)
 * `epochs` << `10` (maximum number of lines written to the file for monitoring progress)
