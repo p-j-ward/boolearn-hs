@@ -95,25 +95,22 @@ int getdata()
 		
 	fscanf(fp,"%d%d",&intype,&indata);
 	
-	if(indata)
+	if(!(intype==0 || intype==1 || intype==2))
 		{
-		if(1+indata!=innodes)
-			{
-			printf("1+indata != innodes\n");
-			
-			fclose(fp);
-			
-			return 0;
-			}
-			
-		if(intype!=1 && intype!=2)
-			{
-			printf("intype must be 1 (analog) or 2 (binary)\n");
+		printf("intype must be 0 (analog), 1 (1-hot) or 2 (binary)\n");
 		
-			fclose(fp);
+		fclose(fp);
 		
-			return 0;
-			}
+		return 0;
+		}
+			
+	if(indata && (1+indata!=innodes))
+		{
+		printf("1+indata != innodes\n");
+			
+		fclose(fp);
+			
+		return 0;
 		}
 		
 	fscanf(fp,"%d%d",&outtype,&outdata);
@@ -171,7 +168,7 @@ int getdata()
 			{
 			for(n=1;n<innodes;++n)
 				{
-				if(intype==1)
+				if(intype==0)
 					{
 					fscanf(fp,"%lf",&yf);
 				
@@ -376,15 +373,35 @@ void neuronproj(int deg,double wn[WMAX],double xn[WMAX],double *yn)
 
 void projA()
 	{
-	int i,n,d,e;
-	double wn[WMAX],xn[WMAX],yn;
+	int i,n,d,e,nmax;
+	double wn[WMAX],xn[WMAX],yn,ymax;
 	
 	for(i=0;i<items;++i)
 		{
 		if(!indata)
 			{
-			for(n=1;n<innodes;++n)
-				yA[i][n]=(y[i][n]<0.) ? -1. : 1.;
+			if(intype==2)
+				{
+				for(n=1;n<innodes;++n)
+					yA[i][n]=(y[i][n]<0.) ? -1. : 1.;
+				}
+			else
+				{
+				for(n=1;n<innodes;++n)
+					yA[i][n]=-1.;
+					
+				ymax=y[i][1];
+				nmax=1;
+				
+				for(n=2;n<innodes;++n)
+					if(y[i][n]>ymax)
+						{
+						ymax=y[i][n];
+						nmax=n;
+						}
+				
+				yA[i][nmax]=1.;
+				}
 			}
 	
 		for(n=innodes;n<nodes;++n)
@@ -701,7 +718,8 @@ int solve(double *gap,double itermax,double itermult,double gapstop)
 void printsol()
 	{
 	FILE *fp;
-	int e,in,out,codes,usedcodes,*counts,c,code,i,n,bit;
+	int e,in,out,codes,usedcodes,*counts,c,code,i,n,bit,nmax;
+	double ymax;
 
 	fp=fopen(solfile,"w");
 	
@@ -717,7 +735,44 @@ void printsol()
 		
 	fclose(fp);
 	
-	if(!indata)
+	if(!indata && intype==1)
+		{
+		counts=malloc((innodes-1)*sizeof(int));
+		
+		for(n=1;n<innodes;++n)
+			counts[n]=0;
+		
+		for(i=0;i<items;++i)
+			{
+			ymax=yB[i][1];
+			nmax=1;
+			
+			for(n=2;n<innodes;++n)
+				if(yB[i][n]>ymax)
+					{
+					ymax=yB[i][n];
+					nmax=n;
+					}
+			
+			++counts[nmax];
+			}
+			
+		fp=fopen(genfile,"w");
+		
+		fprintf(fp,"%d  %d\n\n",innodes-1,innodes-1);
+		
+		for(c=1;c<innodes;++c)
+			{
+			for(n=1;n<innodes;++n)
+				fprintf(fp,"%2d",n==c);
+				
+			fprintf(fp,"\t%d\n",counts[c]);
+			}
+			
+		fclose(fp);		
+		}
+		
+	if(!indata && intype==2)
 		{
 		codes=1<<(innodes-1);
 		
