@@ -23,7 +23,7 @@ The positive number $\delta$ is the *margin parameter*. Large $\delta$ is more r
 
 If a BTF $`f(x):\{-1,1\}^m\to \{-1,1\}`$ has a representation with margin $\delta=\sqrt{m/n}$ for some $n>0$, then $f$ has a representation where the support $s$ of its weights $w$ is at most the largest odd integer not exceeding $n$.
 
-
+The positive number $n$ is the BTF-norm parameter. An interesting setting is `n` << `3`
 
 
 
