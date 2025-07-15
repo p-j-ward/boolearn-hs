@@ -19,7 +19,17 @@ Boolearn imposes an additional constraint that goes beyond how BTFs are normally
 
 $|w\cdot x| \ge \delta$
 
-The positive number $\delta$ is the *margin parameter*. Large $\delta$ is more restrictive, and when sufficiently large, boolnets can represent arbitrary Boolean circuits comprised of binary AND/OR gates as well as NOT. Because weights of negative sign flip the truth value of the corresponding input, they are the NOT gates in the circuit.
+The positive number $\delta$ is the *margin parameter*. Large $\delta$ is more restrictive, and forces the network to stay clear of "gray areas" in its decision making. Large margins are useful in another respect, as expressed by the following theorem:
+>If a BTF $f(x):\{-1,1\}^m\to \{-1,1\}$ has a representation with margin $\delta=\sqrt{m/n}$ for some $n>0$, then $f$ has a representation where the support $s$ of its weights $w$ is at most the largest odd integer not exceeding $n$.
+
+
+
+
+
+
+and when sufficiently large, boolnets can represent arbitrary Boolean circuits comprised of binary AND/OR gates as well as NOT. Because weights of negative sign flip the truth value of the corresponding input, they are the NOT gates in the circuit.
+
+
 
 To better understand the Boolean circuit correspondence and its generalization, consider a boolnet that has been trained so the margin constraint, with some $\delta$, is satisfied at all the BTFs and over all the training data. By adjusting the weights at each BTF we can then increase $\delta$, individually for each BTF, without changing the Boolean function it implements. When $\delta$ is maximized, the weight vector has the form $(\sqrt{m/n})\mathbf{w}$, where $\mathbf{w}$ has a support $s$ of coprime integers and squared norm $\mathbf{w}\cdot \mathbf{w}=n$, and there are $s$ linearly independent Boolean $x$ that satsify $|\mathbf{w}\cdot x|=1$. This $s=3$ example,
 
