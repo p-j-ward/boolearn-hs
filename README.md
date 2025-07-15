@@ -20,9 +20,8 @@ Boolearn imposes an additional constraint that goes beyond how BTFs are normally
 $|w\cdot x| \ge \delta$
 
 The positive number $\delta$ is the *margin parameter*. Large $\delta$ is more restrictive, and forces the network to stay clear of "gray areas" in its decision making. Large margins are useful in another respect, as expressed by the following theorem:
-```
 If a BTF $`f(x):\{-1,1\}^m\to \{-1,1\}`$ has a representation with margin $\delta=\sqrt{m/n}$ for some $n>0$, then $f$ has a representation where the support $s$ of its weights $w$ is at most the largest odd integer not exceeding $n$.
-```
+
 
 
 
