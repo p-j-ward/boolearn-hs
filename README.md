@@ -450,7 +450,7 @@ When `train` sees output-type `c    1` (c > 2) in the header, it replaces the ou
 2
 64 64 10
 ```
-Regarding the analog input, instead of converting `0`/`1` to -1/+1 (binary data), when the input type is `1`, `train` expects floating point numbers in the range [0, 1] and maps these linearly into the range [-1, +1]. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
+Regarding the analog input, instead of converting `0`/`1` to -1/+1 (binary data), when the input type is `0`, `train` expects floating point numbers in the range [0, 1] and maps these linearly into the range [-1, +1]. Nothing changes in the constraint satisfaction algorithm aside from the node variables $y$ getting projected to continuous values at the input nodes (to the data values). The $y$ variables at all the other nodes continue to be Boolean.
 
 MNIST is our first experiment with generalization. We train on just the first N data items with the command line
 ```
