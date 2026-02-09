@@ -17,4 +17,4 @@ Boolearn is easiest to learn by **starting with your goal** and picking the shor
 
 If you prefer one long, monolithic document (the original guide), it’s preserved here:
 
-- [legacy/USER_GUIDE_ORIGINAL.md](legacy/USER_GUIDE_ORIGINAL.md)
+- [legacy/USER_GUIDE_FULL.md](legacy/USER_GUIDE_FULL.md)

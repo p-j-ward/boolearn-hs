@@ -1,0 +1,16 @@
+title: Boolearn
+description: Projection-based training for Boolean / binary neural-style architectures (gap instead of loss)
+
+# GitHub Pages + Just the Docs
+remote_theme: just-the-docs/just-the-docs@v0.5.2
+plugins:
+  - jekyll-remote-theme
+
+color_scheme: light
+search_enabled: true
+
+# If you publish as a *project* site (https://USER.github.io/REPO/), you may need:
+# baseurl: "/REPO"
+# GitHub Pages often infers this automatically; relative links also work well.
+baseurl: ""
+url: ""
