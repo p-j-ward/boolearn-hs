@@ -40,8 +40,7 @@ This produces `run1.cmd`, `run1.gap`, `run1.run`, `run1.sol` in the current fold
 ## Documentation
 
 - Start here → [docs/README.md](docs/README.md)
-- Applications (verbatim sections from the original guide) → [docs/applications/](docs/applications/)
-- Original monolithic guide → [docs/legacy/USER_GUIDE_ORIGINAL.md](docs/legacy/USER_GUIDE_ORIGINAL.md)
+- Applications → [docs/applications/](docs/applications/)
 
 ## Data
 
