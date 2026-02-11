@@ -1,10 +1,10 @@
 <h1 align="center">
-  <img src="docs/assets/boo.png" width="48" style="vertical-align: middle;"/>
+  <img src="assets/boo.png" width="48" style="vertical-align: middle;"/>
   Boolearn
 </h1>
 
 <p align="center">
-  <img src="docs/assets/DCnet.png" width="800"/>
+  <img src="assets/DCnet.png" width="800"/>
 </p>
 
 
