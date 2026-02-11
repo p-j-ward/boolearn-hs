@@ -9,8 +9,8 @@ Boolearn is easiest to learn by **starting with your goal** and picking the shor
 - 📦 **Browse applications** → [applications/](applications/)
 - 📈 **Follow worked tutorials** → [EXAMPLES.md](EXAMPLES.md)
 - 🛠 **Performance + internals** → [DEVELOPMENT.md](DEVELOPMENT.md)
-- ❓ **Gotchas / common questions** → [FAQ.md](FAQ.md)
-- 📓 **Notebooks (optional)** → [NOTEBOOKS.md](NOTEBOOKS.md)
+- ❓ **Gotchas** → [FAQ.md](FAQ.md)
+- 📓 **Notebooks** → [NOTEBOOKS.md](NOTEBOOKS.md)
 
 
 ## Legacy
