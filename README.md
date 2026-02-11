@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-  <img src="assets/DCnet.png" width="800"/>
+  <img src="docs/assets/dcnet.png" width="800"/>
 </p>
 
 
