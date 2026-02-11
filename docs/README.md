@@ -13,8 +13,8 @@ Boolearn is easiest to learn by **starting with your goal** and picking the shor
 - 📓 **Notebooks** → [NOTEBOOKS.md](NOTEBOOKS.md)
 
 
-## Legacy
+## Full documentation
 
-If you prefer one long, monolithic document (the original guide), it’s preserved here:
+If you prefer one long, monolithic document, we provide it here:
 
 - [legacy/USER_GUIDE_ORIGINAL.md](legacy/USER_GUIDE_ORIGINAL.md)
