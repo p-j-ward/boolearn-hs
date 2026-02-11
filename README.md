@@ -1,11 +1,18 @@
-# Boolearn
+<h1 align="center">
+  <img src="docs/assets/boo.png" width="48" style="vertical-align: middle;"/>
+  Boolearn
+</h1>
 
-![Boolearn example output](docs/assets/4_512.png)
+<p align="center">
+  <img src="docs/assets/DCnet.png" width="800"/>
+</p>
 
 
-Boolearn is a small C toolkit for training and testing **boolnets** — networks of Boolean threshold functions — using **constraint projections**. Progress is measured with a **gap** (constraint violation) rather than a typical ML-style loss.
+Boolearn is a lightweight C toolkit for training and testing **Boolean threshold networks** via **constraint projections**. 
 
-The workflow is intentionally CLI-first: build a few Unix-style tools, then run them from the example folders.
+Instead of minimizing a loss, training drives a **gap** (constraint violation) to zero.
+
+The design is intentionally CLI-first and composable.
 
 ## Quickstart
 
