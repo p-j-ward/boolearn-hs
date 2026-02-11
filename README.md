@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="assets/booo.png" width="48" style="vertical-align: middle;"/>
+  <img src="assets/boo.png" width="48" style="vertical-align: middle;"/>
   Boolearn
 </h1>
 
