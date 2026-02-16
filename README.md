@@ -1,8 +1,8 @@
-<h1 align="center">
-  <img src="assets/boo.png" width="50" style="vertical-align: middle;"/>
+<h2 align="center">
+  <img src="assets/boo.png" width="30" style="vertical-align: middle;"/>
 boolearn
-  <img src="assets/boo.png" width="50" style="vertical-align: middle;"/>
-</h1>
+  <img src="assets/boo.png" width="30" style="vertical-align: middle;"/>
+</h2>
 
 <p align="center">
   <img src="docs/assets/dcnet.png" width="800"/>
