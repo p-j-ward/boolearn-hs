@@ -1,6 +1,6 @@
 <h1 align="center">
   <img src="assets/boo.png" width="40" style="vertical-align: middle;"/>
-style="font-size: 18px;" boolearn
+boolearn
   <img src="assets/boo.png" width="40" style="vertical-align: middle;"/>
 </h1>
 
