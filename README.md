@@ -1,8 +1,8 @@
-<h2 align="center">
+<h1 align="center">
   <img src="assets/boo.png" width="30" style="vertical-align: middle;"/>
 boolearn
   <img src="assets/boo.png" width="30" style="vertical-align: middle;"/>
-</h2>
+</h1>
 
 <p align="center">
   <img src="docs/assets/dcnet.png" width="800"/>
