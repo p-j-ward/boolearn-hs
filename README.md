@@ -173,7 +173,7 @@ Here is the command line we used for training the 2-bit multiplier and the meani
 
 `2x2a`  — identifier used on all output files
 
-## Mental model
+## Mental model 
 
 - `*.dat` — datasets (booleans encoded as ±1)
 - `*.net` — network graphs + weights
