@@ -10,7 +10,7 @@ boolearn
 </p>
 -->
 
-**boolearn** is a lightweight C toolkit for training **boolnets**  — networks of Boolean threshold functions.
+**boolearn** is a lightweight C toolkit for training **boolnets**  — networks of **Boolean threshold functions**.
 
 Since Boolean threshold functions have ±1 outputs, boolnets cannot be trained by gradient-descent (back-propagation).
 
@@ -39,13 +39,15 @@ Run the smallest tutorial example (2-bit multiplier):
 cd ../mult
 
 # generate a layered network from a width file
-../src/layered 0.5 2x2.wth 2x2.net
+../src/layered 2x2.wth 2x2.net
 
 # train
-../src/train 2x2.net 2x2.dat 16 3 0.2 1e-3 10 1e4 0.01 1 run1
+../src/train 2x2.net 2x2.dat 16 3 0.2 1e-3 10 1e4 0.01 1 2x2a &
 ```
 
-This produces `run1.cmd`, `run1.gap`, `run1.run`, `run1.sol` in the current folder. 
+This produces `2x2a.cmd`, `2x2a.gap`, `2x2a.run`, `2x2a.sol` in the current diectory. 
+
+### Width files
 
 ## Mental model
 
