@@ -42,7 +42,7 @@ cd ../mult
 ../src/layered 2x2.wth 2x2.net
 
 # train
-../src/train 2x2.net 2x2.dat 16 3. 0.2 1e-3 10 1e4 0.01 1 2x2a
+../src/train 2x2.net 2x2.dat 16 3. .2 1e-3 10 1e4 .01 1 2x2a
 ```
 
 This produces `2x2a.cmd`, `2x2a.gap`, `2x2a.run`, `2x2a.sol` in the current diectory. 
@@ -148,7 +148,7 @@ There are 3823 data. The second line tells us these are analog (0) and 64 in num
 Here is the command line we used for training the 2-bit multiplier and the meaning of the arguments:
 
 ````
-../src/train 2x2.net 2x2.dat 16 3. 0.2 1e-3 10 1e4 0.01 1 2x2a
+../src/train 2x2.net 2x2.dat 16 3. .2 1e-3 10 1e4 .01 1 2x2a
 ````
 
 `2x2.net`  — network file of the model
@@ -157,8 +157,21 @@ Here is the command line we used for training the 2-bit multiplier and the meani
 
 `16`  — number of data to be used for training
 
-`3.`  — sparsity parameter
+`3.`  — support parameter (sigma)
 
+`.2`  — time step parameter (beta)
+
+`1e-3`  — metric relaxation parameter (gamma)
+
+`10`  — maximum number of line/checkpoints in `2x2a.gap` (gap output file)
+
+`1e4`  — maximum number of iterations of the RRR constraint solver
+
+`.01`  — stop when gap reaches this value
+
+`1`  — number of runs from different random starts
+
+`2x2a`  — identifier used on all output files
 
 ## Mental model
 
