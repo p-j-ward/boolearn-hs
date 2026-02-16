@@ -1,7 +1,7 @@
 <h1 align="center">
-  <img src="assets/boo.png" width="30" style="vertical-align: middle;"/>
-boolearn
-  <img src="assets/boo.png" width="30" style="vertical-align: middle;"/>
+  <img src="assets/boo.png" width="40" style="vertical-align: middle;"/>
+style="font-size: 18px;" boolearn
+  <img src="assets/boo.png" width="40" style="vertical-align: middle;"/>
 </h1>
 
 <!--
