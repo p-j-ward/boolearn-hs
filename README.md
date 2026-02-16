@@ -4,10 +4,11 @@ boolearn
   <img src="assets/boo.png" width="30" style="vertical-align: middle;"/>
 </h1>
 
+<!--
 <p align="center">
   <img src="docs/assets/dcnet.png" width="800"/>
 </p>
-
+-->
 
 Boolearn is a lightweight C toolkit for training and testing **Boolean threshold networks** via **constraint projections**. 
 
