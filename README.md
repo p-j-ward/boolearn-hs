@@ -10,7 +10,7 @@ boolearn
 </p>
 -->
 
-**boolearn** is a lightweight C toolkit for training **boolnets** - networks of Boolean threshold functions.
+**boolearn** is a lightweight C toolkit for training **boolnets**  — networks of Boolean threshold functions.
 
 Since Boolean threshold functions have ±1 outputs, boolnets cannot be trained by gradient-descent (back-propagation).
 
@@ -49,7 +49,7 @@ This produces `run1.cmd`, `run1.gap`, `run1.run`, `run1.sol` in the current fold
 
 ## Mental model
 
-- `*.dat`  datasets (booleans encoded as ±1)
+- `*.dat` — datasets (booleans encoded as ±1)
 - `*.net` — network graphs + weights
 - `layered` — generates a fully connected layered boolnet from a `*.wth` file
 - `train` — runs constraint satisfaction and writes a `*.gap` log you can watch
