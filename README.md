@@ -10,7 +10,7 @@ boolearn
 </p>
 -->
 
-Boolearn is a lightweight C toolkit for training and testing **Boolean threshold networks** via **constraint projections**. 
+**boolearn** is a lightweight C toolkit for training **Boolean threshold functionnetworks**. 
 
 Instead of minimizing a loss, training drives a **gap** (constraint violation) to zero.
 
