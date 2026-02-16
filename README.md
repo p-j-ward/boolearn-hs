@@ -10,11 +10,17 @@ boolearn
 </p>
 -->
 
-**boolearn** is a lightweight C toolkit for training **Boolean threshold functionnetworks**. 
+**boolearn** is a lightweight C toolkit for training **boolnets** --networks of Boolean threshold functions.
 
-Instead of minimizing a loss, training drives a **gap** (constraint violation) to zero.
+Since Boolean threshold functions have +1/-1 outputs, boolnets cannot be trained by gradient-descent (back-propagation).
 
-The design is intentionally CLI-first and composable.
+The training algorithm in boolearn is based on constraints and projections to these constraints.
+
+Using divide-and-concur, the constraints fall into sets A and B that each have easy projections. A trained network is a point that lies in both A and B.
+
+Instead of minimizing a loss, boolearn minimizes the distance between pairs of points in A and B. When this distance---the "gap"---is zero, training is complete.
+
+boolearn is research software and intentionally CLI-first.
 
 ## Quickstart
 
