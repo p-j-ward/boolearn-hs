@@ -45,7 +45,7 @@ cd ../mult
 ../src/train 2x2.net 2x2.dat 16 3 0.2 1e-3 10 1e4 0.01 1 run1
 ```
 
-This produces `run1.cmd`, `run1.gap`, `run1.run`, `run1.sol` in the current folder.
+This produces `run1.cmd`, `run1.gap`, `run1.run`, `run1.sol` in the current folder. 
 
 ## Mental model
 
