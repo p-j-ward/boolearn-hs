@@ -314,7 +314,7 @@ Here's how the program `data` is used to generate the trained model's MNIST 4's:
 Because of the `0` in the slot for the number of data items, the file `16a.gen` is used for the network inputs. The resulting data file `16a.dat` will just have 16 items because `16a.gen` has 16 generators. In the first argument of the program `data` it's important to use the network file of the trained model, `16a.sol`, and not the network file `16a.net` created by `layered`.
 
 
-
+<!--
 
 ##
 
@@ -334,3 +334,5 @@ Because of the `0` in the slot for the number of data items, the file `16a.gen` 
 ## Data
 
 Datasets live under [data/](data/) (see [data/README.md](data/README.md)).
+
+-->
