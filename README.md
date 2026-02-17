@@ -13,7 +13,7 @@
 
 **boolearn** is a lightweight C toolkit for training **boolnets**  — networks of **Boolean threshold functions**.
 
-Since Boolean threshold functions have ±1 outputs, boolnets cannot be trained by gradient-descent (back-propagation).
+Since Boolean threshold functions are non-differentiable, networks composed of hard threshold units cannot be trained using standard gradient backpropagation without surrogate or smoothing methods.
 
 The training algorithm in boolearn is based on **constraints** and **projections** to these constraints.
 
@@ -23,7 +23,7 @@ Instead of minimizing a loss, boolearn minimizes the distance between pairs of p
 
 For details, see *Learning with Boolean threshold functions* (*LWBTF*) by Elser & Lal.
 
-**Note:** boolearn is research software and intentionally CLI-first.
+**Note:** boolearn is research software, intentionally CLI-first and designed for reproducible scientific workflows. It is released to support open scientific research. We ask that derivative uses preserve attribution and respect its research-oriented intent.
 
 ## Quickstart
 
