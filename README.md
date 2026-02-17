@@ -319,6 +319,7 @@ Because of the `0` in the slot for the number of data items, the file `16a.gen` 
 ##
 
 
+
  Mental model 
 
 - `*.dat` — datasets (booleans encoded as ±1)
