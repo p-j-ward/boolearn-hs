@@ -24,7 +24,7 @@ For details, see *Learning with Boolean threshold functions* by Elser & Lal.
 
 **Note:** boolearn is research software and intentionally CLI-first.
 
-## Quickstart
+### Quickstart
 
 Build the tools:
 
