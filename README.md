@@ -213,7 +213,7 @@ Each line is a checkpoint in the final run. Checkpoints are exponentially spaced
 
 ## How do I generate synthetic data?
 
-*LWBTF* features three kinds of synthetic data created with programs in **boolearn**:
+*LWBTF* features two kinds of synthetic data created with programs in **boolearn**:
 
 ### Random logic circuits 
 
