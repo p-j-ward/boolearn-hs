@@ -1,14 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <time.h>
 
 #define LMAX 20
 #define WMAX 1024
 
 
 int layers,width[LMAX];
-double w0,weight[WMAX],andorfrac;
 
 
 int getwidths(char *widthfile)
@@ -32,51 +29,6 @@ int getwidths(char *widthfile)
 	fclose(fp);
 	
 	return 1;
-	}
-	
-
-double urand()
-	{
-	return ((double)rand())/RAND_MAX;
-	}
-	
-	
-int randsgn()
-	{
-	return 2*(rand()%2)-1;
-	}
-	
-	
-void andorweight(int inputs)
-	{
-	int i,r1,r2;
-	
-	for(i=0;i<inputs;++i)
-		weight[i]=0.;
-	
-	if(urand()>andorfrac)
-		{
-		w0=0.;
-		
-		r1=rand()%inputs;
-		
-		weight[r1]=randsgn()*sqrt((inputs+1.)/1.);
-		}
-	else
-		{
-		w0=randsgn()*sqrt((inputs+1.)/3.);
-		
-		r1=rand()%inputs;
-		
-		weight[r1]=randsgn()*sqrt((inputs+1.)/3.);
-		
-		do	{
-			r2=rand()%inputs;
-			}
-		while(r2==r1);
-		
-		weight[r2]=randsgn()*sqrt((inputs+1.)/3.);
-		}
 	}
 	
 		
@@ -107,13 +59,11 @@ void printnet(char *netfile)
 	for(l=1;l<=layers;++l)
 		{
 		for(i=0;i<width[l];++i)
-			{
-			andorweight(width[l-1]);
-				
-			fprintf(fp,"%5d%5d%14.8lf\n",i+in,0,w0);
+			{	
+			fprintf(fp,"%5d%5d%14.8lf\n",i+in,0,.0);
 			
 			for(j=0;j<width[l-1];++j)
-				fprintf(fp,"%5d%5d%14.8lf\n",i+in,j+out,weight[j]);
+				fprintf(fp,"%5d%5d%14.8lf\n",i+in,j+out,.0);
 			}
 			
 		out+=width[l-1];
@@ -128,22 +78,19 @@ int main(int argc,char* argv[])
 	{
 	char *widthfile,*netfile;
 	
-	if(argc==4)
+	if(argc==3)
 		{
-		andorfrac=atof(argv[1]);
-		widthfile=argv[2];
-		netfile=argv[3];
+		widthfile=argv[1];
+		netfile=argv[2];
 		}
 	else
 		{
-		printf("expected 3 arguments: andorfrac widthfile netfile\n");
+		printf("expected 2 arguments: widthfile netfile\n");
 		return 1;
 		}
 		
 	if(!getwidths(widthfile))
 		return 0;
-		
-	srand(time(NULL));
 	
 	printnet(netfile);
 		

@@ -1,8 +1,0 @@
-cff-version: 1.2.0
-title: Boolearn
-message: "If you use this software, please cite it."
-type: software
-authors:
-  - name: "Boolearn contributors"
-repository-code: "https://github.com/<USER_OR_ORG>/<REPO>"
-license: "MIT"

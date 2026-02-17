@@ -82,7 +82,7 @@ int getnet()
 	return 1;
 	}
 
-	
+/*	
 void infer(double *winfer)
 	{
 	int n,d,e,out;
@@ -101,6 +101,28 @@ void infer(double *winfer)
 			}
 				
 		yinfer[n]=dot>0. ? 1. : -1.;
+		}
+*/		
+		
+	void infer(double *winfer)
+	{
+	int n,d,e,out;
+	double dot,ysgn;
+	
+	for(n=innodes;n<nodes;++n)
+		{
+		dot=0.;
+			
+		for(d=0;d<indeg[n];++d)
+			{
+			e=inedge[n][d];
+			out=outnode[e];
+			ysgn=yinfer[out]>0. ? 1. : -1.;	
+			
+			dot+=winfer[e]*ysgn;
+			}
+				
+		yinfer[n]=dot;
 		}
 	}
 	

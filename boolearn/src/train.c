@@ -21,9 +21,9 @@ double **w,**x,**y,**wA,**xA,**yA,**wR,**xR,**yR,*wB,**yB;
 
 double **gnode,**gapnode;
 
-double btfn,beta,gam;
+double sig,beta,gam;
 
-double acctrain=0.,acctest=0.;
+double acctrain=0.,acctest=0.,acctrainmax;
 
 	
 void allocvars()
@@ -304,7 +304,7 @@ void neuronproj(int deg,double wn[WMAX],double xn[WMAX],double *yn)
 	int d;
 	double del,dot,dist1,dist0,w1[WMAX],w0[WMAX],x1[WMAX],x0[WMAX];
 	
-	del=sqrt(deg/btfn);
+	del=sqrt(deg/sig);
 	
 	dot=0.;
 	for(d=0;d<deg;++d)
@@ -614,8 +614,8 @@ void init()
 
 double accuracy(int train)
 	{
-	int i,i0,i1,n,hit,num;
-	double accitem,acc;
+	int i,i0,i1,n,nmax;
+	double accitem,acc,ymax;
 	
 	if(train)
 		{
@@ -651,67 +651,25 @@ double accuracy(int train)
 			}
 		else
 			{
-			hit=0;
-			num=0;
+			ymax=-1e10;
+			nmax=0;
+			
 			for(n=0;n<outnodes;++n)
-				{
-				hit+=(yinfer[n+nodes-outnodes]>0.)&&(yB[i][n+nodes-outnodes]>0.);
-				num+=(yinfer[n+nodes-outnodes]>0.);
-				}
+				if(yinfer[n+nodes-outnodes]>ymax)
+					{
+					ymax=yinfer[n+nodes-outnodes];
+					nmax=n;
+					}
 			
-			accitem=hit ? 1./num : 0.;
+			accitem=yB[i][nmax+nodes-outnodes]>0. ? 1. : 0.;
 			}
-			
+						
 		acc+=accitem;
 		}
 			
 	acc/=i1-i0;
 
 	return acc;
-	}
-	
-	
-int solve(double *gap,double itermax,double itermult,double gapstop)
-	{
-	FILE *fp;
-	int iter;
-	double gapw,gapx,gapy,gapmin,iterprint;
-	
-	fp=fopen(gapfile,"w");
-	fclose(fp);
-			
-	init();
-	gapmin=1e10;
-	
-	iterprint=itermult;
-	
-	for(iter=1;iter<=itermax;++iter)
-		{
-		*gap=RRR(&gapw,&gapx,&gapy);
-		
-		if(*gap<gapmin)
-			gapmin=*gap;
-			
-		if(iter>iterprint || gapmin<gapstop || iter==itermax)
-			{
-			if(indata)
-				{
-				acctrain=accuracy(1);
-				acctest=accuracy(0);
-				}
-			
-			fp=fopen(gapfile,"a");
-			fprintf(fp,"%10d%14.8lf%14.8lf%14.8lf%14.8lf%14.8lf%10.3lf %%%10.3lf %%\n",iter,gapw,gapx,gapy,*gap,gapmin,100.*acctrain,100.*acctest);
-			fclose(fp);
-		
-			iterprint*=itermult;
-			}
-			
-		if(gapmin<gapstop)
-			return iter;
-		}
-			
-	return 0;
 	}
 	
 	
@@ -821,6 +779,58 @@ void printsol()
 	}
 	
 	
+int solve(double *gap,double itermax,double itermult,double gapstop)
+	{
+	FILE *fp;
+	int iter;
+	double gapw,gapx,gapy,gapmin,iterprint;
+	
+	fp=fopen(gapfile,"w");
+	fclose(fp);
+			
+	init();
+	gapmin=1e10;
+	
+	acctrainmax=0.;
+	
+	iterprint=itermult;
+	
+	for(iter=1;iter<=itermax;++iter)
+		{
+		*gap=RRR(&gapw,&gapx,&gapy);
+		
+		if(*gap<gapmin)
+			gapmin=*gap;
+			
+		if(iter>iterprint || gapmin<gapstop || iter==itermax)
+			{
+			if(indata)
+				{
+				acctrain=accuracy(1);
+				if(acctrain>acctrainmax)
+					{
+					acctrainmax=acctrain;
+					printsol();
+					}
+					
+				acctest=accuracy(0);
+				}
+			
+			fp=fopen(gapfile,"a");
+			fprintf(fp,"%10d%14.8lf%14.8lf%14.8lf%14.8lf%14.8lf%10.3lf %%%10.3lf %%\n",iter,gapw,gapx,gapy,*gap,gapmin,100.*acctrain,100.*acctest);
+			fclose(fp);
+		
+			iterprint*=itermult;
+			}
+			
+		if(gapmin<gapstop)
+			return iter;
+		}
+			
+	return 0;
+	}
+	
+	
 void run(int trials,double itermax,double itermult,double gapstop)
 	{
 	FILE *fp;
@@ -845,7 +855,9 @@ void run(int trials,double itermax,double itermult,double gapstop)
 		if(iter)
 			{
 			++success;
-			printsol();
+			
+			if(!indata)
+				printsol();
 			
 			diter=(double)iter;
 			iterave+=diter;
@@ -855,7 +867,8 @@ void run(int trials,double itermax,double itermult,double gapstop)
 	
 	if(!success)
 		{
-		printsol();
+		if(!indata)
+			printsol();
 		
 		fp=fopen(runfile,"a");
 		
@@ -888,7 +901,7 @@ int main(int argc,char* argv[])
 		netfile=argv[1];
 		datafile=argv[2];
 		items=atoi(argv[3]);
-		btfn=atof(argv[4]);
+		sig=atof(argv[4]);
 		beta=atof(argv[5]);
 		gam=atof(argv[6]);
 		epochs=atoi(argv[7]);
@@ -899,7 +912,7 @@ int main(int argc,char* argv[])
 		}
 	else
 		{
-		printf("expected 11 arguments: netfile datafile items btfn beta gam epochs itermax gapstop trials id\n");
+		printf("expected 11 arguments: netfile datafile items sig beta gam epochs itermax gapstop trials id\n");
 		return 1;
 		}
 	
