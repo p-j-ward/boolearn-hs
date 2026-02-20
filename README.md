@@ -21,7 +21,7 @@ Using **divide-and-concur**, the constraints fall into sets *A* and *B* that eac
 
 Instead of minimizing a loss, boolearn minimizes the distance between pairs of points in *A* and *B* ("the gap"). Training is complete when this distance is zero.
 
-For details, see *Learning with Boolean threshold functions* (*LWBTF*) by Elser & Lal.
+For details, see [*Learning with Boolean threshold functions*](https://arxiv.org/abs/2602.17493) (*LWBTF*) by Elser & Lal.
 
 **Note:** boolearn is research software, intentionally CLI-first and designed for reproducible scientific workflows. It is released to support open scientific research. We ask that derivative uses preserve attribution and respect its research-oriented intent.
 
