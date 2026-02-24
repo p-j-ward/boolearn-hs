@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "net.h"
 
@@ -9,11 +10,30 @@ int getnet()
 	int n,e,in,out;
 	FILE *fp;
 
-	fp=fopen(netfile,"r");
-	if(!fp)
+	// if netfile argument is -, read from stdin, otherwise from file
+	char *buf = NULL;
+	if (0 == strcmp(netfile, "-"))
 		{
-		printf("netfile not found\n");
-		return 0;
+		// read stdin into a buffer, as we make multiple basses
+        size_t bufsize = 8192, len = 0;
+        buf = malloc(bufsize);
+        int c;
+        while ((c = fgetc(stdin)) != EOF)
+			{
+            if (len + 1 >= bufsize) { bufsize *= 2; buf = realloc(buf, bufsize); }
+            buf[len++] = c;
+        	}
+        buf[len] = '\0';
+        fp = fmemopen(buf, len, "r");
+		} 
+	else 
+		{
+		fp=fopen(netfile,"r");
+		if(!fp)
+			{
+			printf("netfile not found\n");
+			return 0;
+			}
 		}
 	
 	fscanf(fp,"%d%d%d%d",&nodes,&innodes,&outnodes,&edges);
@@ -39,7 +59,6 @@ int getnet()
 		++outdeg[out];
 		}
 	
-	fclose(fp);
 	
 	inedge=malloc(nodes*sizeof(int*));
 	outedge=malloc(nodes*sizeof(int*));
@@ -53,8 +72,8 @@ int getnet()
 		outedge[n]=malloc(outdeg[n]*sizeof(int));
 		}
 		
-	fp=fopen(netfile,"r");
-	
+	// second pass down file
+	rewind(fp);
 	fscanf(fp,"%*d%*d%*d%*d");
 	
 	for(n=0;n<nodes;++n)
@@ -78,7 +97,7 @@ int getnet()
 		}
 		
 	fclose(fp);
-	
+	free(buf);
 	return 1;
 	}
 
