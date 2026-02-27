@@ -5,14 +5,9 @@
 --   ./train-hs "[4,4,4,4]" 2x2.dat 3. .2 1e-3 10 1e4 .01 5 2x2a
 import System.Environment
 import System.Process
+import System.IO
 import Data.Maybe
 import Layered
-
-
-genExecStr :: String -> String -> String -> String -> String -> String -> String -> String -> String -> String -> String -> String -> String
-genExecStr netStr trainPath datPath numData sigma beta gamma numCheckpoints maxIters stopGap numRuns outIdent =
-    --unwords ["echo \""++netStr++"\" | ", trainPath, "<(cat)", datPath, numData, sigma, beta, gamma, numCheckpoints, maxIters, stopGap, numRuns, outIdent]
-    unwords ["echo '"++netStr++"' |", trainPath, "-", datPath, numData, sigma, beta, gamma, numCheckpoints, maxIters, stopGap, numRuns, outIdent]
 
 main = do
     -- read path of train executable from environment variable
@@ -22,19 +17,18 @@ main = do
     args <- getArgs
     let widths = read (head args)
     let datPath = args !! 1
-    let (sigma:beta:gamma:numCheckpoints:maxIters:stopGap:numRuns:outIdent:rest) = tail (tail args)
+    let restArgs = tail (tail args)
 
-    -- create fully connected network, which is echo'd into command in place of .net
+    -- create fully connected network, which is echo'd into command in place of netfile
     let netStr = createFullyConnectedNetwork widths
 
     -- get number of training data from first line of dat file
     datStr <- readFile datPath
     let numData = head (lines datStr)
 
-    -- generate the command to call
-    let execStr = genExecStr netStr trainPath datPath numData sigma beta gamma numCheckpoints maxIters stopGap numRuns outIdent
-    
-    putStrLn "Running..."
-    print execStr
-    callCommand execStr
-    putStrLn "Done."
+    -- call train command, passing netfile string through stdin
+    (Just hin, _, _, ph) <- createProcess (proc trainPath (["-", datPath, numData]++restArgs)) { std_in = CreatePipe }
+    hPutStr hin netStr
+    hClose hin
+    waitForProcess ph
+    return ()
