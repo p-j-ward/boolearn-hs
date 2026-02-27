@@ -11,20 +11,9 @@ int getnet()
 	FILE *fp;
 
 	// if netfile argument is -, read from stdin, otherwise from file
-	char *buf = NULL;
 	if (0 == strcmp(netfile, "-"))
 		{
-		// read stdin into a buffer, as we make multiple basses
-        size_t bufsize = 8192, len = 0;
-        buf = malloc(bufsize);
-        int c;
-        while ((c = fgetc(stdin)) != EOF)
-			{
-            if (len + 1 >= bufsize) { bufsize *= 2; buf = realloc(buf, bufsize); }
-            buf[len++] = c;
-        	}
-        buf[len] = '\0';
-        fp = fmemopen(buf, len, "r");
+		fp = stdin;
 		} 
 	else 
 		{
@@ -35,6 +24,22 @@ int getnet()
 			return 0;
 			}
 		}
+	// if fp isn't seekable (e.g. stdin/pipe), buffer it in
+	char *buf = NULL;
+	if (fseek(fp, 0, SEEK_SET) != 0)
+		{
+		size_t bufsize = 8192, len = 0;
+        buf = malloc(bufsize);
+        int c;
+        while ((c = fgetc(fp)) != EOF)
+			{
+            if (len + 1 >= bufsize) { bufsize *= 2; buf = realloc(buf, bufsize); }
+            buf[len++] = c;
+        	}
+        buf[len] = '\0';
+		if (fp != stdin) fclose(fp);
+        fp = fmemopen(buf, len, "r");
+		} 
 	
 	fscanf(fp,"%d%d%d%d",&nodes,&innodes,&outnodes,&edges);
 	
