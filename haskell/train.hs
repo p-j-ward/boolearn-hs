@@ -5,6 +5,19 @@ func pns qns cns u = (pns*(1+u^2) + qns*u)/(1-u^2)^2 - cns
 dFunc :: Double -> Double -> Double -> Double
 dFunc pns qns u = (2*pns*u + qns)/(1-u^2)^2 + 4*u*(pns*(1.0+u^2) + qns*u)/(1-u^2)^3
 
+marginProjIter :: (Double, Double, Double, Double) -> Int -> (Double, Double, Double) -> (Double, Double, Double)
+marginProjIter (pns, qns, cns, stop) count (ua, ub, f) =
+    let df = dFunc pns qns ua
+        u = ua - f/df
+        ua' = if (ub > ua && u > ub) || (ub <= ua && u < ub) then 0.5*(ua+ub) else u
+        f' = func pns qns cns ua'
+        ub' = if (ub>ua && f'>0) || (ub<=ua && f'<0) then ua else ub
+    in
+        if abs (ua' - ua) < stop || count == 0 then
+            (ua', ub', f')
+        else
+            marginProjIter (pns, qns, cns, stop) (count-1) (ua', ub', f')
+
 marginProj :: Double -> Double -> ([Double], [Double]) -> ([Double], [Double])
 marginProj cns w_dot_x (wn, xn) = 
     let pns = w_dot_x --sum $ zipWith (*) wn xn
