@@ -18,12 +18,21 @@ marginProjIter (pns, qns, cns, stop) count (ua, ub, f) =
         else
             marginProjIter (pns, qns, cns, stop) (count-1) (ua', ub', f')
 
-marginProj :: Double -> Double -> ([Double], [Double]) -> ([Double], [Double])
-marginProj cns w_dot_x (wn, xn) = 
-    let pns = w_dot_x --sum $ zipWith (*) wn xn
+marginProj :: Double -> Double -> ([Double], [Double]) -> (Double, [Double], [Double])
+marginProj cns w_dot_x (wn, xn) =
+    let pns = w_dot_x
         qns = sum $ zipWith (+) (map (^2) wn) (map (^2) xn)
+        f_init = func pns qns cns 0
+        (u, _, _) = marginProjIter (pns, qns, cns, 1e-12) 50 (0, -(signum f_init), f_init)
+        -- update wn, xn with new u
+        den = 1 - u^2
+        dw = zipWith (\wn xn -> (wn + u*xn)/den - wn) wn xn
+        dx = zipWith (\wn xn -> (xn + u*wn)/den - xn) wn xn
+        dist = sum $ zipWith (\dw dx -> dw^2 + dx^2) dw dx
+        wn' = zipWith (+) wn dw
+        xn' = zipWith (+) xn dx
     in
-        ([0.0],[0.0])
+        (dist, wn', xn')
 
 
 neuronProj :: Double -> Double -> ([Double], [Double], Double) -> ([Double], [Double], Double)
